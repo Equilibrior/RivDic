@@ -48,17 +48,17 @@ namespace RivDic.Dialogs
         {
             switch (mode)
             {                
-                case Constants.ROUTE:
+                case Constants.Route:
                     pnlRiverNew.Visible = false;
                     pnlRouteNew.Visible = true;
                     pnlStartEndNew.Visible = false;
                     break;
-                case Constants.STARTEND:
+                case Constants.StartEnd:
                     pnlRiverNew.Visible = false;
                     pnlRouteNew.Visible = false;
                     pnlStartEndNew.Visible = true;
                     break;                
-                case Constants.RIVER:
+                case Constants.River:
                 default:
                     pnlRiverNew.Visible = true;
                     pnlRouteNew.Visible = false;

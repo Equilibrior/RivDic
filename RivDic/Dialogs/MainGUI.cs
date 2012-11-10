@@ -20,7 +20,7 @@ namespace RivDic
 
         private void btnRiver_Click(object sender, EventArgs e)
         {
-            using (NewDialog dlg = new NewDialog(Constants.RIVER))
+            using (NewDialog dlg = new NewDialog(Constants.River))
             {
                 if (dlg.ShowDialog() == DialogResult.OK)
                 { 
@@ -33,7 +33,7 @@ namespace RivDic
 
         private void btnRoute_Click(object sender, EventArgs e)
         {
-            using (NewDialog dlg = new NewDialog(Constants.ROUTE))
+            using (NewDialog dlg = new NewDialog(Constants.Route))
             {
                 dlg.ShowDialog();
             }
@@ -41,7 +41,7 @@ namespace RivDic
 
         private void btnStartEnd_Click(object sender, EventArgs e)
         {
-            using (NewDialog dlg = new NewDialog(Constants.STARTEND))
+            using (NewDialog dlg = new NewDialog(Constants.StartEnd))
             {
                 dlg.ShowDialog();
             }

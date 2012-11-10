@@ -8,48 +8,48 @@ namespace RivDic
 {
     class Constants
     {
-        public const string RIVER = "River";
+        public const string River = "River";
 
-        public const string ROUTE = "Route";
+        public const string Route = "Route";
 
-        public const string STARTEND = "StartEnd";
+        public const string StartEnd = "StartEnd";
     }
 
     public class Tbl
     {
-        public const string FLUESSE = "FLUESSE";
+        public const string Fluesse = "FLUESSE";
 
-        public const string FLUSSABSCHNITT = "FLUSSABSCHNITT";
+        public const string FlussAbschnitt = "FLUSSABSCHNITT";
 
-        public const string LAENDER = "LAENDER";
+        public const string Laender = "LAENDER";
 
-        public const string STARTENDE = "STARTENDE";
+        public const string StartEnde = "STARTENDE";
 
 
     }
 
     public class Fld
     {
-        public const string ID = "ID";
+        public const string Id = "ID";
 
-        public const string WWLEVEL = "WWLEVEL";
+        public const string WWLevel = "WWLEVEL";
 
-        public const string NAME = "NAME";
+        public const string Name = "NAME";
 
-        public const string LAND = "LAND";
+        public const string Land = "LAND";
 
-        public const string TICKET = "TICKET";
+        public const string Ticket = "TICKET";
 
-        public const string TICKETPREIS = "TICKETPREIS";
+        public const string Ticketpreis = "TICKETPREIS";
 
-        public const string DATAEND = "DATAEND";
+        public const string DatAend = "DATAEND";
 
-        public const string FLUSSID = "FLUSSID";
+        public const string FlussId = "FLUSSID";
 
-        public const string EINSETZPUNKT = "EINSETZPUNKT";
+        public const string Einsetzpunkt = "EINSETZPUNKT";
 
-        public const string AUSSETZPUNKT = "AUSSETZPUNKT";
+        public const string Aussetzpunkt = "AUSSETZPUNKT";
 
-        public const string KOMMENTAR = "KOMMENTAR";
+        public const string Kommentar = "KOMMENTAR";
     }
 }

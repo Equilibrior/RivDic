@@ -31,13 +31,14 @@
             this.mnuBar = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.sbtnNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRiver = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRoute = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnStartEnd = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRiverNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnRouteNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnStartEndNew = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSearchRiver = new System.Windows.Forms.Button();
             this.btnSearchRoute = new System.Windows.Forms.Button();
             this.btnSearchStartEnd = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.mnuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             this.mnuFile});
             this.mnuBar.Location = new System.Drawing.Point(0, 0);
             this.mnuBar.Name = "mnuBar";
-            this.mnuBar.Size = new System.Drawing.Size(201, 24);
+            this.mnuBar.Size = new System.Drawing.Size(163, 24);
             this.mnuBar.TabIndex = 2;
             this.mnuBar.Text = "menuStrip1";
             // 
@@ -63,33 +64,33 @@
             // sbtnNew
             // 
             this.sbtnNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRiver,
-            this.btnRoute,
-            this.btnStartEnd});
+            this.btnRiverNew,
+            this.btnRouteNew,
+            this.btnStartEndNew});
             this.sbtnNew.Name = "sbtnNew";
             this.sbtnNew.Size = new System.Drawing.Size(167, 22);
             this.sbtnNew.Text = "Neu";
             // 
-            // btnRiver
+            // btnRiverNew
             // 
-            this.btnRiver.Name = "btnRiver";
-            this.btnRiver.Size = new System.Drawing.Size(171, 22);
-            this.btnRiver.Text = "Fluss";
-            this.btnRiver.Click += new System.EventHandler(this.btnRiver_Click);
+            this.btnRiverNew.Name = "btnRiverNew";
+            this.btnRiverNew.Size = new System.Drawing.Size(171, 22);
+            this.btnRiverNew.Text = "Fluss";
+            this.btnRiverNew.Click += new System.EventHandler(this.btnRiverNew_Click);
             // 
-            // btnRoute
+            // btnRouteNew
             // 
-            this.btnRoute.Name = "btnRoute";
-            this.btnRoute.Size = new System.Drawing.Size(171, 22);
-            this.btnRoute.Text = "Strecke";
-            this.btnRoute.Click += new System.EventHandler(this.btnRoute_Click);
+            this.btnRouteNew.Name = "btnRouteNew";
+            this.btnRouteNew.Size = new System.Drawing.Size(171, 22);
+            this.btnRouteNew.Text = "Strecke";
+            this.btnRouteNew.Click += new System.EventHandler(this.btnRouteNew_Click);
             // 
-            // btnStartEnd
+            // btnStartEndNew
             // 
-            this.btnStartEnd.Name = "btnStartEnd";
-            this.btnStartEnd.Size = new System.Drawing.Size(171, 22);
-            this.btnStartEnd.Text = "Ein-/Aussetzpunkt";
-            this.btnStartEnd.Click += new System.EventHandler(this.btnStartEnd_Click);
+            this.btnStartEndNew.Name = "btnStartEndNew";
+            this.btnStartEndNew.Size = new System.Drawing.Size(171, 22);
+            this.btnStartEndNew.Text = "Ein-/Aussetzpunkt";
+            this.btnStartEndNew.Click += new System.EventHandler(this.btnStartEndNew_Click);
             // 
             // btnClose
             // 
@@ -101,7 +102,7 @@
             // 
             // btnSearchRiver
             // 
-            this.btnSearchRiver.Location = new System.Drawing.Point(41, 27);
+            this.btnSearchRiver.Location = new System.Drawing.Point(25, 27);
             this.btnSearchRiver.Name = "btnSearchRiver";
             this.btnSearchRiver.Size = new System.Drawing.Size(122, 35);
             this.btnSearchRiver.TabIndex = 3;
@@ -111,27 +112,41 @@
             // 
             // btnSearchRoute
             // 
-            this.btnSearchRoute.Location = new System.Drawing.Point(41, 68);
+            this.btnSearchRoute.Location = new System.Drawing.Point(25, 68);
             this.btnSearchRoute.Name = "btnSearchRoute";
             this.btnSearchRoute.Size = new System.Drawing.Size(122, 35);
             this.btnSearchRoute.TabIndex = 4;
             this.btnSearchRoute.Text = "Strecke finden";
             this.btnSearchRoute.UseVisualStyleBackColor = true;
+            this.btnSearchRoute.Click += new System.EventHandler(this.btnSearchRoute_Click);
             // 
             // btnSearchStartEnd
             // 
-            this.btnSearchStartEnd.Location = new System.Drawing.Point(41, 109);
+            this.btnSearchStartEnd.Location = new System.Drawing.Point(25, 109);
             this.btnSearchStartEnd.Name = "btnSearchStartEnd";
             this.btnSearchStartEnd.Size = new System.Drawing.Size(122, 35);
             this.btnSearchStartEnd.TabIndex = 5;
             this.btnSearchStartEnd.Text = "Ein-/Aussetzpunkt finden";
             this.btnSearchStartEnd.UseVisualStyleBackColor = true;
+            this.btnSearchStartEnd.Click += new System.EventHandler(this.btnSearchStartEnd_Click);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 179);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(138, 26);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "© Copyrigth by \r\nTobias Blankenhagen 2012";
             // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(201, 246);
+            this.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.ClientSize = new System.Drawing.Size(163, 214);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnSearchStartEnd);
             this.Controls.Add(this.btnSearchRoute);
             this.Controls.Add(this.btnSearchRiver);
@@ -151,13 +166,14 @@
         private System.Windows.Forms.MenuStrip mnuBar;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem sbtnNew;
-        private System.Windows.Forms.ToolStripMenuItem btnRiver;
-        private System.Windows.Forms.ToolStripMenuItem btnRoute;
+        private System.Windows.Forms.ToolStripMenuItem btnRiverNew;
+        private System.Windows.Forms.ToolStripMenuItem btnRouteNew;
         private System.Windows.Forms.ToolStripMenuItem btnClose;
-        private System.Windows.Forms.ToolStripMenuItem btnStartEnd;
+        private System.Windows.Forms.ToolStripMenuItem btnStartEndNew;
         private System.Windows.Forms.Button btnSearchRiver;
         private System.Windows.Forms.Button btnSearchRoute;
         private System.Windows.Forms.Button btnSearchStartEnd;
+        private System.Windows.Forms.Label label1;
     }
 }
 

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,6 +23,12 @@ namespace RivDic
 
         #endregion Konstanten
 
+        #region Properties
+
+        private static FbConnection  fbConnection { get; set; }
+
+        #endregion Properties
+
         #region Methoden
 
         /// <summary>
@@ -37,7 +45,7 @@ namespace RivDic
             sb.Append("Dialect = 3; ");
             sb.Append("Charset = NONE; ");
             sb.Append("Port = 3050;");
-            FbConnection fbConnection = new FbConnection(sb.ToString());
+            fbConnection = new FbConnection(sb.ToString());
 #if DEBUG   
             fbConnection.Open();
             return true;
@@ -60,6 +68,30 @@ namespace RivDic
             }
 #endif
         }
+
+        public static DataTable LoadDataTable(String tableName)
+        { 
+            DataTable dt = new DataTable();
+
+            FbTransaction fbTransaction = fbConnection.BeginTransaction();
+
+            FbCommand fbCommand = new FbCommand();
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * FROM ");
+            sb.Append(tableName.ToUpper());
+
+            fbCommand.CommandText = sb.ToString();
+            fbCommand.Connection = fbConnection;
+            fbCommand.Transaction = fbTransaction;
+
+            FbDataAdapter fbAdapter = new FbDataAdapter(fbCommand);
+            fbAdapter.Fill(dt);
+            fbCommand.Dispose();           
+
+            return dt;
+        }
+
 
         #endregion Methoden
     }

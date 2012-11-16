@@ -30,10 +30,7 @@ namespace RivDic
         {
             using (NewDialog dlg = new NewDialog(Constants.River))
             {
-                if (dlg.ShowDialog() == DialogResult.OK)
-                { 
-                    
-                }
+                dlg.ShowDialog();
             }
         }
 
@@ -58,17 +55,20 @@ namespace RivDic
 
         private void btnSearchRiver_Click(object sender, EventArgs e)
         {
-
+            SearchDialog dlg = new SearchDialog(Constants.River);
+            dlg.ShowDialog();
         }        
 
         private void btnSearchStartEnd_Click(object sender, EventArgs e)
         {
-
+            SearchDialog dlg = new SearchDialog(Constants.StartEnd);
+            dlg.ShowDialog();
         }
 
         private void btnSearchRoute_Click(object sender, EventArgs e)
         {
-
+            SearchDialog dlg = new SearchDialog(Constants.Route);
+            dlg.ShowDialog();
         }
 
         #endregion Suchen

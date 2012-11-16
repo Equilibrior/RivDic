@@ -10,14 +10,30 @@ using System.Windows.Forms;
 
 namespace RivDic.Dialogs
 {
+    /// ============================================================================================================================
     public partial class FieldsControll : UserControl
     {
+        #region Konstruktor
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public FieldsControll()
         {
             InitializeComponent();
-            this.Size = new Size(220, 150);
+            this.Size = new Size(220, 150);            
         }
 
+        #endregion Konstruktor
+
+        #region Methoden
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Rückt das aktuelle Panel an erste Stelle
+        /// </summary>
+        /// <param name="context">Kontext des Panels</param>
         public void ShowPanel(string context)
         {
             switch (context)
@@ -41,5 +57,7 @@ namespace RivDic.Dialogs
                     break;
             }
         }
+
+        #endregion Methoden
     }
 }

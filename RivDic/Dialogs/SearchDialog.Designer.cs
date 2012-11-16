@@ -28,45 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.fieldsControll1 = new RivDic.Dialogs.FieldsControll();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.gridView = new System.Windows.Forms.DataGridView();
+            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // gridView
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.gridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 175);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(348, 169);
-            this.dataGridView1.TabIndex = 0;
+            this.gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridView.Location = new System.Drawing.Point(12, 175);
+            this.gridView.Name = "gridView";
+            this.gridView.Size = new System.Drawing.Size(348, 169);
+            this.gridView.TabIndex = 0;
             // 
-            // fieldsControll1
+            // fieldsControll
             // 
-            this.fieldsControll1.Location = new System.Drawing.Point(13, 13);
-            this.fieldsControll1.Name = "fieldsControll1";
-            this.fieldsControll1.Size = new System.Drawing.Size(220, 150);
-            this.fieldsControll1.TabIndex = 1;
+            this.fieldsControll.Location = new System.Drawing.Point(13, 13);
+            this.fieldsControll.Name = "fieldsControll";
+            this.fieldsControll.Size = new System.Drawing.Size(220, 150);
+            this.fieldsControll.TabIndex = 1;
             // 
             // SearchDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(372, 356);
-            this.Controls.Add(this.fieldsControll1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.fieldsControll);
+            this.Controls.Add(this.gridView);
             this.Name = "SearchDialog";
             this.Text = "DetailDialog";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private FieldsControll fieldsControll1;
+        private System.Windows.Forms.DataGridView gridView;
+        private FieldsControll fieldsControll;
     }
 }

@@ -12,7 +12,7 @@ namespace RivDic.Dialogs
 {
     public partial class SearchDialog : Form
     {
-        public SearchDialog()
+        public SearchDialog(string context)
         {
             InitializeComponent();
         }

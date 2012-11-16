@@ -31,7 +31,6 @@ namespace RivDic.Dialogs
         public NewDialog(string mode)
         {
             InitializeComponent();
-            ChangePanel(mode);
         }
 
         #endregion Konstruktor
@@ -43,30 +42,6 @@ namespace RivDic.Dialogs
         #endregion Properties
 
         #region Methoden
-
-        private void ChangePanel(string mode)
-        {
-            switch (mode)
-            {                
-                case Constants.Route:
-                    pnlRiverNew.Visible = false;
-                    pnlRouteNew.Visible = true;
-                    pnlStartEndNew.Visible = false;
-                    break;
-                case Constants.StartEnd:
-                    pnlRiverNew.Visible = false;
-                    pnlRouteNew.Visible = false;
-                    pnlStartEndNew.Visible = true;
-                    break;                
-                case Constants.River:
-                default:
-                    pnlRiverNew.Visible = true;
-                    pnlRouteNew.Visible = false;
-                    pnlStartEndNew.Visible = false;
-                    break;
-            }
-        }
-
 
         private void btnOk_Click(object sender, EventArgs e)
         {

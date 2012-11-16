@@ -50,6 +50,12 @@
   <ItemGroup>
     <Compile Include="Constants.cs" />
     <Compile Include="Database.cs" />
+    <Compile Include="Dialogs\FieldsControll.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FieldsControll.Designer.cs">
+      <DependentUpon>FieldsControll.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\SearchDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -70,6 +76,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Dialogs\FieldsControll.resx">
+      <DependentUpon>FieldsControll.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>

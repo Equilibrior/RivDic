@@ -9,11 +9,13 @@ using FirebirdSql.Data.FirebirdClient;
 
 namespace RivDic
 {
+    /// ============================================================================================================================
     public class Database
     {
 
         #region Konstanten
 
+        /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary> Konstante für den Speicherplatz der Datenbank</summary>
         private const string DbPath = "C:\\Users\\msi\\Databases\\FLUESSEDB.FDB"; //
         /// <summary> Konstante für den User</summary>
@@ -25,12 +27,17 @@ namespace RivDic
 
         #region Properties
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Die Datenbankconnection
+        /// </summary>
         private static FbConnection  fbConnection { get; set; }
 
         #endregion Properties
 
         #region Methoden
 
+        /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
         /// Einlogen in die Datenbank mit Festen User und Passwort 
         /// </summary>
@@ -69,6 +76,12 @@ namespace RivDic
 #endif
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Lädt alle Daten der übergebenen Tabelle 
+        /// </summary>
+        /// <param name="tableName">Tabelle die geladen werden soll</param>
+        /// <returns>Der Inhalt der Tabelle als DataTable</returns>
         public static DataTable LoadDataTable(String tableName)
         { 
             DataTable dt = new DataTable();
@@ -87,7 +100,10 @@ namespace RivDic
 
             FbDataAdapter fbAdapter = new FbDataAdapter(fbCommand);
             fbAdapter.Fill(dt);
-            fbCommand.Dispose();           
+            
+            fbTransaction.Dispose();
+            fbCommand.Dispose();
+            fbAdapter.Dispose();
 
             return dt;
         }

@@ -37,8 +37,6 @@ namespace RivDic.Dialogs
 
         #region Properties
 
-        
-
         #endregion Properties
 
         #region Methoden

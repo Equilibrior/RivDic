@@ -31,7 +31,7 @@
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.pnlButtons = new System.Windows.Forms.Panel();
-            this.fieldsControll1 = new RivDic.Dialogs.FieldsControll();
+            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
             this.pnlButtons.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,19 +70,19 @@
             this.pnlButtons.Size = new System.Drawing.Size(233, 30);
             this.pnlButtons.TabIndex = 2;
             // 
-            // fieldsControll1
+            // fieldsControll
             // 
-            this.fieldsControll1.Location = new System.Drawing.Point(13, 13);
-            this.fieldsControll1.Name = "fieldsControll1";
-            this.fieldsControll1.Size = new System.Drawing.Size(220, 150);
-            this.fieldsControll1.TabIndex = 3;
+            this.fieldsControll.Location = new System.Drawing.Point(13, 13);
+            this.fieldsControll.Name = "fieldsControll";
+            this.fieldsControll.Size = new System.Drawing.Size(220, 150);
+            this.fieldsControll.TabIndex = 3;
             // 
             // NewDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(251, 226);
-            this.Controls.Add(this.fieldsControll1);
+            this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.pnlButtons);
             this.Name = "NewDialog";
             this.Text = "NewDialog";
@@ -96,6 +96,6 @@
         private System.Windows.Forms.Button btnAbort;
         private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Panel pnlButtons;
-        private FieldsControll fieldsControll1;
+        private FieldsControll fieldsControll;
     }
 }

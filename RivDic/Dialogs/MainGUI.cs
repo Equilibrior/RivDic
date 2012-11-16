@@ -11,10 +11,15 @@ using RivDic.Dialogs;
 
 namespace RivDic
 {
+    /// ============================================================================================================================
     public partial class MainGUI : Form
     {
         #region Konstruktor
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public MainGUI()
         {
             InitializeComponent();
@@ -26,6 +31,12 @@ namespace RivDic
 
         #region Neu anlegen
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Neu-anlegen"-Dialog mit Flüssen
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnRiverNew_Click(object sender, EventArgs e)
         {
             using (NewDialog dlg = new NewDialog(Constants.River))
@@ -34,6 +45,12 @@ namespace RivDic
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Neu-anlegen"-Dialog mit Routen
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnRouteNew_Click(object sender, EventArgs e)
         {
             using (NewDialog dlg = new NewDialog(Constants.Route))
@@ -42,6 +59,12 @@ namespace RivDic
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Neu-anlegen"-Dialog mit Start/End Punkten
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStartEndNew_Click(object sender, EventArgs e)
         {
             using (NewDialog dlg = new NewDialog(Constants.StartEnd))
@@ -53,18 +76,36 @@ namespace RivDic
 
         #region Suchen
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Suchen"-Dialog mit Flüssen
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnSearchRiver_Click(object sender, EventArgs e)
         {
             SearchDialog dlg = new SearchDialog(Constants.River);
             dlg.ShowDialog();
-        }        
+        }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Suchen"-Dialog mit Start/End Punkten
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnSearchStartEnd_Click(object sender, EventArgs e)
         {
             SearchDialog dlg = new SearchDialog(Constants.StartEnd);
             dlg.ShowDialog();
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Öffnet den "Suchen"-Dialog mit Routen
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnSearchRoute_Click(object sender, EventArgs e)
         {
             SearchDialog dlg = new SearchDialog(Constants.Route);
@@ -73,6 +114,12 @@ namespace RivDic
 
         #endregion Suchen
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Schließt den Dialog
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
         private void btnClose_Click(object sender, EventArgs e)
         {
             Close();

@@ -88,6 +88,16 @@ namespace RivDic.Properties {
         }
         
         /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap picBackgroundImage {
+            get {
+                object obj = ResourceManager.GetObject("picBackgroundImage", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Sucht eine lokalisierte Zeichenfolge, die Wählen Sie aus ob Sie einen neuen Fluss, eine neue Route, oder einen neuen Ein-/Aussetzpunkt erstellen möchten ähnelt.
         /// </summary>
         internal static string TxtCreateNewChoice {

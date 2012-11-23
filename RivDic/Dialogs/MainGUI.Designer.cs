@@ -38,14 +38,15 @@
             this.btnSearchRiver = new System.Windows.Forms.Button();
             this.btnSearchRoute = new System.Windows.Forms.Button();
             this.btnSearchStartEnd = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.mnuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuBar
             // 
+            this.mnuBar.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.mnuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile});
+            this.mnuBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuBar.Location = new System.Drawing.Point(0, 0);
             this.mnuBar.Name = "mnuBar";
             this.mnuBar.Size = new System.Drawing.Size(163, 24);
@@ -130,23 +131,13 @@
             this.btnSearchStartEnd.UseVisualStyleBackColor = true;
             this.btnSearchStartEnd.Click += new System.EventHandler(this.btnSearchStartEnd_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 179);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 26);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "© Copyrigth by \r\nTobias Blankenhagen 2012";
-            // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.LightSeaGreen;
-            this.ClientSize = new System.Drawing.Size(163, 214);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.LavenderBlush;
+            this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
+            this.ClientSize = new System.Drawing.Size(163, 171);
             this.Controls.Add(this.btnSearchStartEnd);
             this.Controls.Add(this.btnSearchRoute);
             this.Controls.Add(this.btnSearchRiver);
@@ -173,7 +164,6 @@
         private System.Windows.Forms.Button btnSearchRiver;
         private System.Windows.Forms.Button btnSearchRoute;
         private System.Windows.Forms.Button btnSearchStartEnd;
-        private System.Windows.Forms.Label label1;
     }
 }
 

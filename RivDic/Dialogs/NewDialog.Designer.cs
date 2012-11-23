@@ -62,6 +62,7 @@
             // 
             this.pnlButtons.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlButtons.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.pnlButtons.Controls.Add(this.btnAbort);
             this.pnlButtons.Controls.Add(this.btnOk);
             this.pnlButtons.Location = new System.Drawing.Point(9, 221);
@@ -72,6 +73,7 @@
             // 
             // fieldsControll
             // 
+            this.fieldsControll.BackColor = System.Drawing.Color.Transparent;
             this.fieldsControll.Location = new System.Drawing.Point(13, 13);
             this.fieldsControll.Name = "fieldsControll";
             this.fieldsControll.Size = new System.Drawing.Size(220, 200);
@@ -81,6 +83,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.ClientSize = new System.Drawing.Size(251, 260);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.pnlButtons);

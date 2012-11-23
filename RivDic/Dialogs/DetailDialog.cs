@@ -27,6 +27,8 @@ namespace RivDic.Dialogs
             LoadData(context);
             fieldsControll.ShowPanel(context);
             fieldsControll.SetPanelReadOnly(context, true);
+            if (context.Equals(Constants.StartEnd))
+                mnuCalculateRoute.Visible = true;
             gridView.ReadOnly = true;
         }
 
@@ -101,7 +103,15 @@ namespace RivDic.Dialogs
             fieldsControll.SetContent(context,row);
         }
 
+        private void mnuCalculateRoute_Click(object sender, EventArgs e)
+        {
+            string coordinates = fieldsControll.mtxtStartEndCoordinates.Text.ToString();
+            System.Diagnostics.Process.Start("https://maps.google.de/maps?q=" + coordinates);
+        }
+
         #endregion Methoden        
+
+        
 
         
     }

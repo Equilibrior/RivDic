@@ -70,7 +70,7 @@
             // 
             // pnlStartEnd
             // 
-            this.pnlStartEnd.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlStartEnd.BackColor = System.Drawing.Color.Transparent;
             this.pnlStartEnd.Controls.Add(this.mtxtStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.lblStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.chkStartEndStart);
@@ -81,7 +81,7 @@
             this.pnlStartEnd.Controls.Add(this.lblName);
             this.pnlStartEnd.Controls.Add(this.lblStartEndeEnd);
             this.pnlStartEnd.Controls.Add(this.lblStartEndeStart);
-            this.pnlStartEnd.Location = new System.Drawing.Point(9, 252);
+            this.pnlStartEnd.Location = new System.Drawing.Point(235, 355);
             this.pnlStartEnd.Margin = new System.Windows.Forms.Padding(0);
             this.pnlStartEnd.Name = "pnlStartEnd";
             this.pnlStartEnd.Size = new System.Drawing.Size(218, 144);
@@ -108,6 +108,7 @@
             // 
             this.chkStartEndStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkStartEndStart.AutoSize = true;
+            this.chkStartEndStart.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.chkStartEndStart.Location = new System.Drawing.Point(142, 85);
             this.chkStartEndStart.Name = "chkStartEndStart";
             this.chkStartEndStart.Size = new System.Drawing.Size(15, 14);
@@ -118,6 +119,7 @@
             // 
             this.chkStartEndEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkStartEndEnd.AutoSize = true;
+            this.chkStartEndEnd.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.chkStartEndEnd.Location = new System.Drawing.Point(142, 108);
             this.chkStartEndEnd.Name = "chkStartEndEnd";
             this.chkStartEndEnd.Size = new System.Drawing.Size(15, 14);
@@ -142,6 +144,8 @@
             // 
             // txtStartEndName
             // 
+            this.txtStartEndName.BackColor = System.Drawing.SystemColors.Window;
+            this.txtStartEndName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtStartEndName.Location = new System.Drawing.Point(93, 7);
             this.txtStartEndName.Name = "txtStartEndName";
             this.txtStartEndName.Size = new System.Drawing.Size(116, 20);
@@ -150,6 +154,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
+            this.lblName.BackColor = System.Drawing.Color.Transparent;
             this.lblName.Location = new System.Drawing.Point(6, 10);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
@@ -192,6 +197,7 @@
             // 
             // pnlRoute
             // 
+            this.pnlRoute.BackColor = System.Drawing.Color.Transparent;
             this.pnlRoute.Controls.Add(this.cbxRouteStart);
             this.pnlRoute.Controls.Add(this.cbxRouteEnd);
             this.pnlRoute.Controls.Add(this.cbxRouteRiver);
@@ -204,37 +210,37 @@
             this.pnlRoute.Controls.Add(this.txtRouteComment);
             this.pnlRoute.Controls.Add(this.lblRouteEnd);
             this.pnlRoute.Controls.Add(this.lblRouteComment);
-            this.pnlRoute.Location = new System.Drawing.Point(241, 29);
+            this.pnlRoute.Location = new System.Drawing.Point(235, 29);
             this.pnlRoute.Margin = new System.Windows.Forms.Padding(0);
             this.pnlRoute.Name = "pnlRoute";
-            this.pnlRoute.Size = new System.Drawing.Size(212, 170);
+            this.pnlRoute.Size = new System.Drawing.Size(218, 170);
             this.pnlRoute.TabIndex = 6;
             // 
             // cbxRouteStart
             // 
             this.cbxRouteStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRouteStart.FormattingEnabled = true;
-            this.cbxRouteStart.Location = new System.Drawing.Point(76, 56);
+            this.cbxRouteStart.Location = new System.Drawing.Point(93, 56);
             this.cbxRouteStart.Name = "cbxRouteStart";
-            this.cbxRouteStart.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteStart.Size = new System.Drawing.Size(116, 21);
             this.cbxRouteStart.TabIndex = 14;
             // 
             // cbxRouteEnd
             // 
             this.cbxRouteEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRouteEnd.FormattingEnabled = true;
-            this.cbxRouteEnd.Location = new System.Drawing.Point(76, 83);
+            this.cbxRouteEnd.Location = new System.Drawing.Point(93, 83);
             this.cbxRouteEnd.Name = "cbxRouteEnd";
-            this.cbxRouteEnd.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteEnd.Size = new System.Drawing.Size(116, 21);
             this.cbxRouteEnd.TabIndex = 13;
             // 
             // cbxRouteRiver
             // 
             this.cbxRouteRiver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxRouteRiver.FormattingEnabled = true;
-            this.cbxRouteRiver.Location = new System.Drawing.Point(76, 29);
+            this.cbxRouteRiver.Location = new System.Drawing.Point(93, 29);
             this.cbxRouteRiver.Name = "cbxRouteRiver";
-            this.cbxRouteRiver.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteRiver.Size = new System.Drawing.Size(116, 21);
             this.cbxRouteRiver.TabIndex = 12;
             // 
             // lblRouteRiver
@@ -266,16 +272,16 @@
             // 
             // txtRouteName
             // 
-            this.txtRouteName.Location = new System.Drawing.Point(76, 3);
+            this.txtRouteName.Location = new System.Drawing.Point(93, 3);
             this.txtRouteName.Name = "txtRouteName";
-            this.txtRouteName.Size = new System.Drawing.Size(133, 20);
+            this.txtRouteName.Size = new System.Drawing.Size(116, 20);
             this.txtRouteName.TabIndex = 1;
             // 
             // txtRouteComment
             // 
-            this.txtRouteComment.Location = new System.Drawing.Point(76, 110);
+            this.txtRouteComment.Location = new System.Drawing.Point(93, 110);
             this.txtRouteComment.Name = "txtRouteComment";
-            this.txtRouteComment.Size = new System.Drawing.Size(133, 20);
+            this.txtRouteComment.Size = new System.Drawing.Size(116, 20);
             this.txtRouteComment.TabIndex = 5;
             // 
             // lblRouteEnd
@@ -298,6 +304,7 @@
             // 
             // pnlRiver
             // 
+            this.pnlRiver.BackColor = System.Drawing.Color.Transparent;
             this.pnlRiver.Controls.Add(this.lblRiverTicketPricer);
             this.pnlRiver.Controls.Add(this.chkRiverTicket);
             this.pnlRiver.Controls.Add(this.txtRiverTicketPrice);
@@ -308,7 +315,7 @@
             this.pnlRiver.Controls.Add(this.lblRiverLand);
             this.pnlRiver.Controls.Add(this.txtRiverName);
             this.pnlRiver.Controls.Add(this.lblRiverName);
-            this.pnlRiver.Location = new System.Drawing.Point(250, 252);
+            this.pnlRiver.Location = new System.Drawing.Point(241, 209);
             this.pnlRiver.Margin = new System.Windows.Forms.Padding(0);
             this.pnlRiver.Name = "pnlRiver";
             this.pnlRiver.Size = new System.Drawing.Size(212, 131);
@@ -327,6 +334,7 @@
             // 
             this.chkRiverTicket.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chkRiverTicket.AutoSize = true;
+            this.chkRiverTicket.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.chkRiverTicket.Location = new System.Drawing.Point(139, 82);
             this.chkRiverTicket.Name = "chkRiverTicket";
             this.chkRiverTicket.Size = new System.Drawing.Size(15, 14);
@@ -408,11 +416,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.pnlStartEnd);
             this.Controls.Add(this.pnlRoute);
             this.Controls.Add(this.pnlRiver);
             this.Name = "FieldsControll";
-            this.Size = new System.Drawing.Size(472, 440);
+            this.Size = new System.Drawing.Size(472, 557);
             this.pnlStartEnd.ResumeLayout(false);
             this.pnlStartEnd.PerformLayout();
             this.pnlRoute.ResumeLayout(false);

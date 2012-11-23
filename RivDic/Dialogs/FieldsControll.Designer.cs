@@ -28,69 +28,124 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pnlStartEndSearch = new System.Windows.Forms.Panel();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.pnlStartEnd = new System.Windows.Forms.Panel();
+            this.mtxtStartEndCoordinates = new System.Windows.Forms.MaskedTextBox();
+            this.lblStartEndCoordinates = new System.Windows.Forms.Label();
+            this.chkStartEndStart = new System.Windows.Forms.CheckBox();
+            this.chkStartEndEnd = new System.Windows.Forms.CheckBox();
+            this.txtStartEndLand = new System.Windows.Forms.TextBox();
+            this.lblStartEndLand = new System.Windows.Forms.Label();
+            this.txtStartEndName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
-            this.txtStartEndeComment = new System.Windows.Forms.TextBox();
-            this.lblStartEndeComment = new System.Windows.Forms.Label();
-            this.txtStartEndeWWLevel = new System.Windows.Forms.TextBox();
-            this.lblStartEndeWWLevel = new System.Windows.Forms.Label();
-            this.txtStartEndeEnd = new System.Windows.Forms.TextBox();
             this.lblStartEndeEnd = new System.Windows.Forms.Label();
-            this.txtStartEndeStart = new System.Windows.Forms.TextBox();
             this.lblStartEndeStart = new System.Windows.Forms.Label();
-            this.pnlRouteSearch = new System.Windows.Forms.Panel();
+            this.txtRouteWWLevel = new System.Windows.Forms.TextBox();
+            this.lblRouteWWLevel = new System.Windows.Forms.Label();
+            this.pnlRoute = new System.Windows.Forms.Panel();
+            this.cbxRouteStart = new System.Windows.Forms.ComboBox();
+            this.cbxRouteEnd = new System.Windows.Forms.ComboBox();
+            this.cbxRouteRiver = new System.Windows.Forms.ComboBox();
+            this.lblRouteRiver = new System.Windows.Forms.Label();
             this.lblRouteStart = new System.Windows.Forms.Label();
-            this.checkBox3 = new System.Windows.Forms.CheckBox();
             this.lblRouteName = new System.Windows.Forms.Label();
             this.txtRouteName = new System.Windows.Forms.TextBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.lblRouteLand = new System.Windows.Forms.Label();
-            this.txtRouteLand = new System.Windows.Forms.TextBox();
-            this.txtCoordinates = new System.Windows.Forms.TextBox();
+            this.txtRouteComment = new System.Windows.Forms.TextBox();
             this.lblRouteEnd = new System.Windows.Forms.Label();
-            this.lblCoordinates = new System.Windows.Forms.Label();
-            this.pnlRiverSearch = new System.Windows.Forms.Panel();
+            this.lblRouteComment = new System.Windows.Forms.Label();
+            this.pnlRiver = new System.Windows.Forms.Panel();
             this.lblRiverTicketPricer = new System.Windows.Forms.Label();
             this.chkRiverTicket = new System.Windows.Forms.CheckBox();
             this.txtRiverTicketPrice = new System.Windows.Forms.TextBox();
-            this.txtRiverTicket = new System.Windows.Forms.Label();
+            this.lblRiverTicket = new System.Windows.Forms.Label();
             this.txtRiverWWLevel = new System.Windows.Forms.TextBox();
             this.lblRiverWWLevel = new System.Windows.Forms.Label();
             this.txtRiverLand = new System.Windows.Forms.TextBox();
             this.lblRiverLand = new System.Windows.Forms.Label();
             this.txtRiverName = new System.Windows.Forms.TextBox();
             this.lblRiverName = new System.Windows.Forms.Label();
-            this.pnlStartEndSearch.SuspendLayout();
-            this.pnlRouteSearch.SuspendLayout();
-            this.pnlRiverSearch.SuspendLayout();
+            this.pnlStartEnd.SuspendLayout();
+            this.pnlRoute.SuspendLayout();
+            this.pnlRiver.SuspendLayout();
             this.SuspendLayout();
             // 
-            // pnlStartEndSearch
+            // pnlStartEnd
             // 
-            this.pnlStartEndSearch.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlStartEndSearch.Controls.Add(this.txtName);
-            this.pnlStartEndSearch.Controls.Add(this.lblName);
-            this.pnlStartEndSearch.Controls.Add(this.txtStartEndeComment);
-            this.pnlStartEndSearch.Controls.Add(this.lblStartEndeComment);
-            this.pnlStartEndSearch.Controls.Add(this.txtStartEndeWWLevel);
-            this.pnlStartEndSearch.Controls.Add(this.lblStartEndeWWLevel);
-            this.pnlStartEndSearch.Controls.Add(this.txtStartEndeEnd);
-            this.pnlStartEndSearch.Controls.Add(this.lblStartEndeEnd);
-            this.pnlStartEndSearch.Controls.Add(this.txtStartEndeStart);
-            this.pnlStartEndSearch.Controls.Add(this.lblStartEndeStart);
-            this.pnlStartEndSearch.Location = new System.Drawing.Point(21, 172);
-            this.pnlStartEndSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlStartEndSearch.Name = "pnlStartEndSearch";
-            this.pnlStartEndSearch.Size = new System.Drawing.Size(218, 140);
-            this.pnlStartEndSearch.TabIndex = 7;
+            this.pnlStartEnd.BackColor = System.Drawing.SystemColors.Control;
+            this.pnlStartEnd.Controls.Add(this.mtxtStartEndCoordinates);
+            this.pnlStartEnd.Controls.Add(this.lblStartEndCoordinates);
+            this.pnlStartEnd.Controls.Add(this.chkStartEndStart);
+            this.pnlStartEnd.Controls.Add(this.chkStartEndEnd);
+            this.pnlStartEnd.Controls.Add(this.txtStartEndLand);
+            this.pnlStartEnd.Controls.Add(this.lblStartEndLand);
+            this.pnlStartEnd.Controls.Add(this.txtStartEndName);
+            this.pnlStartEnd.Controls.Add(this.lblName);
+            this.pnlStartEnd.Controls.Add(this.lblStartEndeEnd);
+            this.pnlStartEnd.Controls.Add(this.lblStartEndeStart);
+            this.pnlStartEnd.Location = new System.Drawing.Point(9, 252);
+            this.pnlStartEnd.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlStartEnd.Name = "pnlStartEnd";
+            this.pnlStartEnd.Size = new System.Drawing.Size(218, 144);
+            this.pnlStartEnd.TabIndex = 7;
             // 
-            // txtName
+            // mtxtStartEndCoordinates
             // 
-            this.txtName.Location = new System.Drawing.Point(93, 7);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(116, 20);
-            this.txtName.TabIndex = 9;
+            this.mtxtStartEndCoordinates.Location = new System.Drawing.Point(93, 59);
+            this.mtxtStartEndCoordinates.Mask = "00,000000. 00,000000";
+            this.mtxtStartEndCoordinates.Name = "mtxtStartEndCoordinates";
+            this.mtxtStartEndCoordinates.Size = new System.Drawing.Size(116, 20);
+            this.mtxtStartEndCoordinates.TabIndex = 8;
+            // 
+            // lblStartEndCoordinates
+            // 
+            this.lblStartEndCoordinates.AutoSize = true;
+            this.lblStartEndCoordinates.Location = new System.Drawing.Point(6, 62);
+            this.lblStartEndCoordinates.Name = "lblStartEndCoordinates";
+            this.lblStartEndCoordinates.Size = new System.Drawing.Size(64, 13);
+            this.lblStartEndCoordinates.TabIndex = 8;
+            this.lblStartEndCoordinates.Text = "Koordinaten";
+            // 
+            // chkStartEndStart
+            // 
+            this.chkStartEndStart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkStartEndStart.AutoSize = true;
+            this.chkStartEndStart.Location = new System.Drawing.Point(142, 85);
+            this.chkStartEndStart.Name = "chkStartEndStart";
+            this.chkStartEndStart.Size = new System.Drawing.Size(15, 14);
+            this.chkStartEndStart.TabIndex = 10;
+            this.chkStartEndStart.UseVisualStyleBackColor = true;
+            // 
+            // chkStartEndEnd
+            // 
+            this.chkStartEndEnd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkStartEndEnd.AutoSize = true;
+            this.chkStartEndEnd.Location = new System.Drawing.Point(142, 108);
+            this.chkStartEndEnd.Name = "chkStartEndEnd";
+            this.chkStartEndEnd.Size = new System.Drawing.Size(15, 14);
+            this.chkStartEndEnd.TabIndex = 11;
+            this.chkStartEndEnd.UseVisualStyleBackColor = true;
+            // 
+            // txtStartEndLand
+            // 
+            this.txtStartEndLand.Location = new System.Drawing.Point(93, 33);
+            this.txtStartEndLand.Name = "txtStartEndLand";
+            this.txtStartEndLand.Size = new System.Drawing.Size(116, 20);
+            this.txtStartEndLand.TabIndex = 9;
+            // 
+            // lblStartEndLand
+            // 
+            this.lblStartEndLand.AutoSize = true;
+            this.lblStartEndLand.Location = new System.Drawing.Point(6, 36);
+            this.lblStartEndLand.Name = "lblStartEndLand";
+            this.lblStartEndLand.Size = new System.Drawing.Size(31, 13);
+            this.lblStartEndLand.TabIndex = 10;
+            this.lblStartEndLand.Text = "Land";
+            // 
+            // txtStartEndName
+            // 
+            this.txtStartEndName.Location = new System.Drawing.Point(93, 7);
+            this.txtStartEndName.Name = "txtStartEndName";
+            this.txtStartEndName.Size = new System.Drawing.Size(116, 20);
+            this.txtStartEndName.TabIndex = 1;
             // 
             // lblName
             // 
@@ -101,106 +156,104 @@
             this.lblName.TabIndex = 8;
             this.lblName.Text = "Name";
             // 
-            // txtStartEndeComment
-            // 
-            this.txtStartEndeComment.Location = new System.Drawing.Point(93, 111);
-            this.txtStartEndeComment.Name = "txtStartEndeComment";
-            this.txtStartEndeComment.Size = new System.Drawing.Size(116, 20);
-            this.txtStartEndeComment.TabIndex = 7;
-            // 
-            // lblStartEndeComment
-            // 
-            this.lblStartEndeComment.AutoSize = true;
-            this.lblStartEndeComment.Location = new System.Drawing.Point(6, 114);
-            this.lblStartEndeComment.Name = "lblStartEndeComment";
-            this.lblStartEndeComment.Size = new System.Drawing.Size(60, 13);
-            this.lblStartEndeComment.TabIndex = 6;
-            this.lblStartEndeComment.Text = "Kommentar";
-            // 
-            // txtStartEndeWWLevel
-            // 
-            this.txtStartEndeWWLevel.Location = new System.Drawing.Point(93, 85);
-            this.txtStartEndeWWLevel.Name = "txtStartEndeWWLevel";
-            this.txtStartEndeWWLevel.Size = new System.Drawing.Size(116, 20);
-            this.txtStartEndeWWLevel.TabIndex = 5;
-            // 
-            // lblStartEndeWWLevel
-            // 
-            this.lblStartEndeWWLevel.AutoSize = true;
-            this.lblStartEndeWWLevel.Location = new System.Drawing.Point(6, 88);
-            this.lblStartEndeWWLevel.Name = "lblStartEndeWWLevel";
-            this.lblStartEndeWWLevel.Size = new System.Drawing.Size(84, 13);
-            this.lblStartEndeWWLevel.TabIndex = 4;
-            this.lblStartEndeWWLevel.Text = "Wildwasserstufe";
-            // 
-            // txtStartEndeEnd
-            // 
-            this.txtStartEndeEnd.Location = new System.Drawing.Point(93, 59);
-            this.txtStartEndeEnd.Name = "txtStartEndeEnd";
-            this.txtStartEndeEnd.Size = new System.Drawing.Size(116, 20);
-            this.txtStartEndeEnd.TabIndex = 3;
-            // 
             // lblStartEndeEnd
             // 
             this.lblStartEndeEnd.AutoSize = true;
-            this.lblStartEndeEnd.Location = new System.Drawing.Point(6, 62);
+            this.lblStartEndeEnd.Location = new System.Drawing.Point(6, 108);
             this.lblStartEndeEnd.Name = "lblStartEndeEnd";
             this.lblStartEndeEnd.Size = new System.Drawing.Size(71, 13);
             this.lblStartEndeEnd.TabIndex = 2;
             this.lblStartEndeEnd.Text = "Aussetzpunkt";
             // 
-            // txtStartEndeStart
-            // 
-            this.txtStartEndeStart.Location = new System.Drawing.Point(93, 33);
-            this.txtStartEndeStart.Name = "txtStartEndeStart";
-            this.txtStartEndeStart.Size = new System.Drawing.Size(116, 20);
-            this.txtStartEndeStart.TabIndex = 1;
-            this.txtStartEndeStart.Text = "0\'00,00";
-            // 
             // lblStartEndeStart
             // 
             this.lblStartEndeStart.AutoSize = true;
-            this.lblStartEndeStart.Location = new System.Drawing.Point(6, 36);
+            this.lblStartEndeStart.Location = new System.Drawing.Point(6, 85);
             this.lblStartEndeStart.Name = "lblStartEndeStart";
             this.lblStartEndeStart.Size = new System.Drawing.Size(68, 13);
             this.lblStartEndeStart.TabIndex = 0;
             this.lblStartEndeStart.Text = "Einsetzpunkt";
             // 
-            // pnlRouteSearch
+            // txtRouteWWLevel
             // 
-            this.pnlRouteSearch.Controls.Add(this.lblRouteStart);
-            this.pnlRouteSearch.Controls.Add(this.checkBox3);
-            this.pnlRouteSearch.Controls.Add(this.lblRouteName);
-            this.pnlRouteSearch.Controls.Add(this.txtRouteName);
-            this.pnlRouteSearch.Controls.Add(this.checkBox2);
-            this.pnlRouteSearch.Controls.Add(this.lblRouteLand);
-            this.pnlRouteSearch.Controls.Add(this.txtRouteLand);
-            this.pnlRouteSearch.Controls.Add(this.txtCoordinates);
-            this.pnlRouteSearch.Controls.Add(this.lblRouteEnd);
-            this.pnlRouteSearch.Controls.Add(this.lblCoordinates);
-            this.pnlRouteSearch.Location = new System.Drawing.Point(241, 29);
-            this.pnlRouteSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlRouteSearch.Name = "pnlRouteSearch";
-            this.pnlRouteSearch.Size = new System.Drawing.Size(212, 124);
-            this.pnlRouteSearch.TabIndex = 6;
+            this.txtRouteWWLevel.Location = new System.Drawing.Point(93, 136);
+            this.txtRouteWWLevel.Name = "txtRouteWWLevel";
+            this.txtRouteWWLevel.Size = new System.Drawing.Size(116, 20);
+            this.txtRouteWWLevel.TabIndex = 4;
+            // 
+            // lblRouteWWLevel
+            // 
+            this.lblRouteWWLevel.AutoSize = true;
+            this.lblRouteWWLevel.Location = new System.Drawing.Point(6, 139);
+            this.lblRouteWWLevel.Name = "lblRouteWWLevel";
+            this.lblRouteWWLevel.Size = new System.Drawing.Size(84, 13);
+            this.lblRouteWWLevel.TabIndex = 4;
+            this.lblRouteWWLevel.Text = "Wildwasserstufe";
+            // 
+            // pnlRoute
+            // 
+            this.pnlRoute.Controls.Add(this.cbxRouteStart);
+            this.pnlRoute.Controls.Add(this.cbxRouteEnd);
+            this.pnlRoute.Controls.Add(this.cbxRouteRiver);
+            this.pnlRoute.Controls.Add(this.lblRouteRiver);
+            this.pnlRoute.Controls.Add(this.lblRouteStart);
+            this.pnlRoute.Controls.Add(this.txtRouteWWLevel);
+            this.pnlRoute.Controls.Add(this.lblRouteWWLevel);
+            this.pnlRoute.Controls.Add(this.lblRouteName);
+            this.pnlRoute.Controls.Add(this.txtRouteName);
+            this.pnlRoute.Controls.Add(this.txtRouteComment);
+            this.pnlRoute.Controls.Add(this.lblRouteEnd);
+            this.pnlRoute.Controls.Add(this.lblRouteComment);
+            this.pnlRoute.Location = new System.Drawing.Point(241, 29);
+            this.pnlRoute.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlRoute.Name = "pnlRoute";
+            this.pnlRoute.Size = new System.Drawing.Size(212, 170);
+            this.pnlRoute.TabIndex = 6;
+            // 
+            // cbxRouteStart
+            // 
+            this.cbxRouteStart.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRouteStart.FormattingEnabled = true;
+            this.cbxRouteStart.Location = new System.Drawing.Point(76, 56);
+            this.cbxRouteStart.Name = "cbxRouteStart";
+            this.cbxRouteStart.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteStart.TabIndex = 14;
+            // 
+            // cbxRouteEnd
+            // 
+            this.cbxRouteEnd.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRouteEnd.FormattingEnabled = true;
+            this.cbxRouteEnd.Location = new System.Drawing.Point(76, 83);
+            this.cbxRouteEnd.Name = "cbxRouteEnd";
+            this.cbxRouteEnd.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteEnd.TabIndex = 13;
+            // 
+            // cbxRouteRiver
+            // 
+            this.cbxRouteRiver.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxRouteRiver.FormattingEnabled = true;
+            this.cbxRouteRiver.Location = new System.Drawing.Point(76, 29);
+            this.cbxRouteRiver.Name = "cbxRouteRiver";
+            this.cbxRouteRiver.Size = new System.Drawing.Size(133, 21);
+            this.cbxRouteRiver.TabIndex = 12;
+            // 
+            // lblRouteRiver
+            // 
+            this.lblRouteRiver.AutoSize = true;
+            this.lblRouteRiver.Location = new System.Drawing.Point(6, 29);
+            this.lblRouteRiver.Name = "lblRouteRiver";
+            this.lblRouteRiver.Size = new System.Drawing.Size(31, 13);
+            this.lblRouteRiver.TabIndex = 8;
+            this.lblRouteRiver.Text = "Fluss";
             // 
             // lblRouteStart
             // 
             this.lblRouteStart.AutoSize = true;
-            this.lblRouteStart.Location = new System.Drawing.Point(6, 56);
+            this.lblRouteStart.Location = new System.Drawing.Point(6, 59);
             this.lblRouteStart.Name = "lblRouteStart";
             this.lblRouteStart.Size = new System.Drawing.Size(44, 13);
             this.lblRouteStart.TabIndex = 4;
             this.lblRouteStart.Text = "Einstieg";
-            // 
-            // checkBox3
-            // 
-            this.checkBox3.AutoSize = true;
-            this.checkBox3.Location = new System.Drawing.Point(152, 75);
-            this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(15, 14);
-            this.checkBox3.TabIndex = 11;
-            this.checkBox3.UseVisualStyleBackColor = true;
             // 
             // lblRouteName
             // 
@@ -213,78 +266,53 @@
             // 
             // txtRouteName
             // 
-            this.txtRouteName.Location = new System.Drawing.Point(109, 3);
+            this.txtRouteName.Location = new System.Drawing.Point(76, 3);
             this.txtRouteName.Name = "txtRouteName";
-            this.txtRouteName.Size = new System.Drawing.Size(100, 20);
+            this.txtRouteName.Size = new System.Drawing.Size(133, 20);
             this.txtRouteName.TabIndex = 1;
             // 
-            // checkBox2
+            // txtRouteComment
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(152, 55);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(15, 14);
-            this.checkBox2.TabIndex = 10;
-            this.checkBox2.UseVisualStyleBackColor = true;
-            // 
-            // lblRouteLand
-            // 
-            this.lblRouteLand.AutoSize = true;
-            this.lblRouteLand.Location = new System.Drawing.Point(6, 32);
-            this.lblRouteLand.Name = "lblRouteLand";
-            this.lblRouteLand.Size = new System.Drawing.Size(31, 13);
-            this.lblRouteLand.TabIndex = 2;
-            this.lblRouteLand.Text = "Land";
-            // 
-            // txtRouteLand
-            // 
-            this.txtRouteLand.Location = new System.Drawing.Point(109, 29);
-            this.txtRouteLand.Name = "txtRouteLand";
-            this.txtRouteLand.Size = new System.Drawing.Size(100, 20);
-            this.txtRouteLand.TabIndex = 3;
-            // 
-            // txtCoordinates
-            // 
-            this.txtCoordinates.Location = new System.Drawing.Point(109, 95);
-            this.txtCoordinates.Name = "txtCoordinates";
-            this.txtCoordinates.Size = new System.Drawing.Size(100, 20);
-            this.txtCoordinates.TabIndex = 9;
+            this.txtRouteComment.Location = new System.Drawing.Point(76, 110);
+            this.txtRouteComment.Name = "txtRouteComment";
+            this.txtRouteComment.Size = new System.Drawing.Size(133, 20);
+            this.txtRouteComment.TabIndex = 5;
             // 
             // lblRouteEnd
             // 
             this.lblRouteEnd.AutoSize = true;
-            this.lblRouteEnd.Location = new System.Drawing.Point(6, 74);
+            this.lblRouteEnd.Location = new System.Drawing.Point(6, 86);
             this.lblRouteEnd.Name = "lblRouteEnd";
             this.lblRouteEnd.Size = new System.Drawing.Size(47, 13);
             this.lblRouteEnd.TabIndex = 6;
             this.lblRouteEnd.Text = "Ausstieg";
             // 
-            // lblCoordinates
+            // lblRouteComment
             // 
-            this.lblCoordinates.AutoSize = true;
-            this.lblCoordinates.Location = new System.Drawing.Point(6, 98);
-            this.lblCoordinates.Name = "lblCoordinates";
-            this.lblCoordinates.Size = new System.Drawing.Size(64, 13);
-            this.lblCoordinates.TabIndex = 8;
-            this.lblCoordinates.Text = "Koordinaten";
+            this.lblRouteComment.AutoSize = true;
+            this.lblRouteComment.Location = new System.Drawing.Point(6, 113);
+            this.lblRouteComment.Name = "lblRouteComment";
+            this.lblRouteComment.Size = new System.Drawing.Size(60, 13);
+            this.lblRouteComment.TabIndex = 8;
+            this.lblRouteComment.Text = "Kommentar";
             // 
-            // pnlRiverSearch
+            // pnlRiver
             // 
-            this.pnlRiverSearch.Controls.Add(this.lblRiverTicketPricer);
-            this.pnlRiverSearch.Controls.Add(this.chkRiverTicket);
-            this.pnlRiverSearch.Controls.Add(this.txtRiverTicketPrice);
-            this.pnlRiverSearch.Controls.Add(this.txtRiverTicket);
-            this.pnlRiverSearch.Controls.Add(this.txtRiverWWLevel);
-            this.pnlRiverSearch.Controls.Add(this.lblRiverWWLevel);
-            this.pnlRiverSearch.Controls.Add(this.txtRiverLand);
-            this.pnlRiverSearch.Controls.Add(this.lblRiverLand);
-            this.pnlRiverSearch.Controls.Add(this.txtRiverName);
-            this.pnlRiverSearch.Controls.Add(this.lblRiverName);
-            this.pnlRiverSearch.Location = new System.Drawing.Point(250, 172);
-            this.pnlRiverSearch.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlRiverSearch.Name = "pnlRiverSearch";
-            this.pnlRiverSearch.Size = new System.Drawing.Size(212, 132);
-            this.pnlRiverSearch.TabIndex = 5;
+            this.pnlRiver.Controls.Add(this.lblRiverTicketPricer);
+            this.pnlRiver.Controls.Add(this.chkRiverTicket);
+            this.pnlRiver.Controls.Add(this.txtRiverTicketPrice);
+            this.pnlRiver.Controls.Add(this.lblRiverTicket);
+            this.pnlRiver.Controls.Add(this.txtRiverWWLevel);
+            this.pnlRiver.Controls.Add(this.lblRiverWWLevel);
+            this.pnlRiver.Controls.Add(this.txtRiverLand);
+            this.pnlRiver.Controls.Add(this.lblRiverLand);
+            this.pnlRiver.Controls.Add(this.txtRiverName);
+            this.pnlRiver.Controls.Add(this.lblRiverName);
+            this.pnlRiver.Location = new System.Drawing.Point(250, 252);
+            this.pnlRiver.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlRiver.Name = "pnlRiver";
+            this.pnlRiver.Size = new System.Drawing.Size(212, 131);
+            this.pnlRiver.TabIndex = 5;
             // 
             // lblRiverTicketPricer
             // 
@@ -313,14 +341,14 @@
             this.txtRiverTicketPrice.Size = new System.Drawing.Size(116, 20);
             this.txtRiverTicketPrice.TabIndex = 5;
             // 
-            // txtRiverTicket
+            // lblRiverTicket
             // 
-            this.txtRiverTicket.AutoSize = true;
-            this.txtRiverTicket.Location = new System.Drawing.Point(5, 82);
-            this.txtRiverTicket.Name = "txtRiverTicket";
-            this.txtRiverTicket.Size = new System.Drawing.Size(37, 13);
-            this.txtRiverTicket.TabIndex = 6;
-            this.txtRiverTicket.Text = "Ticket";
+            this.lblRiverTicket.AutoSize = true;
+            this.lblRiverTicket.Location = new System.Drawing.Point(5, 82);
+            this.lblRiverTicket.Name = "lblRiverTicket";
+            this.lblRiverTicket.Size = new System.Drawing.Size(37, 13);
+            this.lblRiverTicket.TabIndex = 6;
+            this.lblRiverTicket.Text = "Ticket";
             // 
             // txtRiverWWLevel
             // 
@@ -380,55 +408,57 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pnlStartEndSearch);
-            this.Controls.Add(this.pnlRouteSearch);
-            this.Controls.Add(this.pnlRiverSearch);
+            this.Controls.Add(this.pnlStartEnd);
+            this.Controls.Add(this.pnlRoute);
+            this.Controls.Add(this.pnlRiver);
             this.Name = "FieldsControll";
-            this.Size = new System.Drawing.Size(472, 328);
-            this.pnlStartEndSearch.ResumeLayout(false);
-            this.pnlStartEndSearch.PerformLayout();
-            this.pnlRouteSearch.ResumeLayout(false);
-            this.pnlRouteSearch.PerformLayout();
-            this.pnlRiverSearch.ResumeLayout(false);
-            this.pnlRiverSearch.PerformLayout();
+            this.Size = new System.Drawing.Size(472, 440);
+            this.pnlStartEnd.ResumeLayout(false);
+            this.pnlStartEnd.PerformLayout();
+            this.pnlRoute.ResumeLayout(false);
+            this.pnlRoute.PerformLayout();
+            this.pnlRiver.ResumeLayout(false);
+            this.pnlRiver.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel pnlStartEndSearch;
-        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
-        private System.Windows.Forms.TextBox txtStartEndeComment;
-        private System.Windows.Forms.Label lblStartEndeComment;
-        private System.Windows.Forms.TextBox txtStartEndeWWLevel;
-        private System.Windows.Forms.Label lblStartEndeWWLevel;
-        private System.Windows.Forms.TextBox txtStartEndeEnd;
+        private System.Windows.Forms.Label lblRouteWWLevel;
         private System.Windows.Forms.Label lblStartEndeEnd;
-        private System.Windows.Forms.TextBox txtStartEndeStart;
         private System.Windows.Forms.Label lblStartEndeStart;
-        private System.Windows.Forms.Panel pnlRouteSearch;
         private System.Windows.Forms.Label lblRouteStart;
-        private System.Windows.Forms.CheckBox checkBox3;
         private System.Windows.Forms.Label lblRouteName;
-        private System.Windows.Forms.TextBox txtRouteName;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Label lblRouteLand;
-        private System.Windows.Forms.TextBox txtRouteLand;
-        private System.Windows.Forms.TextBox txtCoordinates;
         private System.Windows.Forms.Label lblRouteEnd;
-        private System.Windows.Forms.Label lblCoordinates;
-        private System.Windows.Forms.Panel pnlRiverSearch;
+        private System.Windows.Forms.Label lblRouteComment;
         private System.Windows.Forms.Label lblRiverTicketPricer;
-        private System.Windows.Forms.CheckBox chkRiverTicket;
-        private System.Windows.Forms.TextBox txtRiverTicketPrice;
-        private System.Windows.Forms.Label txtRiverTicket;
-        private System.Windows.Forms.TextBox txtRiverWWLevel;
+        private System.Windows.Forms.Label lblRiverTicket;
         private System.Windows.Forms.Label lblRiverWWLevel;
-        private System.Windows.Forms.TextBox txtRiverLand;
         private System.Windows.Forms.Label lblRiverLand;
-        private System.Windows.Forms.TextBox txtRiverName;
         private System.Windows.Forms.Label lblRiverName;
+        public System.Windows.Forms.Panel pnlStartEnd;
+        public System.Windows.Forms.Panel pnlRoute;
+        public System.Windows.Forms.Panel pnlRiver;
+        public System.Windows.Forms.TextBox txtStartEndName;
+        public System.Windows.Forms.TextBox txtRouteWWLevel;
+        public System.Windows.Forms.TextBox txtRouteName;
+        public System.Windows.Forms.TextBox txtRouteComment;
+        public System.Windows.Forms.CheckBox chkRiverTicket;
+        public System.Windows.Forms.TextBox txtRiverTicketPrice;
+        public System.Windows.Forms.TextBox txtRiverWWLevel;
+        public System.Windows.Forms.TextBox txtRiverLand;
+        public System.Windows.Forms.TextBox txtRiverName;
+        private System.Windows.Forms.Label lblRouteRiver;
+        public System.Windows.Forms.ComboBox cbxRouteRiver;
+        public System.Windows.Forms.TextBox txtStartEndLand;
+        private System.Windows.Forms.Label lblStartEndLand;
+        private System.Windows.Forms.Label lblStartEndCoordinates;
+        public System.Windows.Forms.CheckBox chkStartEndStart;
+        public System.Windows.Forms.CheckBox chkStartEndEnd;
+        public System.Windows.Forms.ComboBox cbxRouteStart;
+        public System.Windows.Forms.ComboBox cbxRouteEnd;
+        public System.Windows.Forms.MaskedTextBox mtxtStartEndCoordinates;
     }
 }

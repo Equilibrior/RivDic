@@ -56,11 +56,11 @@
     <Compile Include="Dialogs\FieldsControll.Designer.cs">
       <DependentUpon>FieldsControll.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\SearchDialog.cs">
+    <Compile Include="Dialogs\DetailDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Dialogs\SearchDialog.Designer.cs">
-      <DependentUpon>SearchDialog.cs</DependentUpon>
+    <Compile Include="Dialogs\DetailDialog.Designer.cs">
+      <DependentUpon>DetailDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="Dialogs\MainGUI.cs">
       <SubType>Form</SubType>
@@ -74,6 +74,7 @@
     <Compile Include="Dialogs\NewDialog.Designer.cs">
       <DependentUpon>NewDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="IdLabelItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Dialogs\FieldsControll.resx">
@@ -85,8 +86,8 @@
     <EmbeddedResource Include="Dialogs\NewDialog.resx">
       <DependentUpon>NewDialog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dialogs\SearchDialog.resx">
-      <DependentUpon>SearchDialog.cs</DependentUpon>
+    <EmbeddedResource Include="Dialogs\DetailDialog.resx">
+      <DependentUpon>DetailDialog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

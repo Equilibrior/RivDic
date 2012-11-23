@@ -84,7 +84,7 @@ namespace RivDic
         /// <param name="e">EventArgs</param>
         private void btnSearchRiver_Click(object sender, EventArgs e)
         {
-            SearchDialog dlg = new SearchDialog(Constants.River);
+            DetailDialog dlg = new DetailDialog(Constants.River);
             dlg.ShowDialog();
         }
 
@@ -96,7 +96,7 @@ namespace RivDic
         /// <param name="e">EventArgs</param>
         private void btnSearchStartEnd_Click(object sender, EventArgs e)
         {
-            SearchDialog dlg = new SearchDialog(Constants.StartEnd);
+            DetailDialog dlg = new DetailDialog(Constants.StartEnd);
             dlg.ShowDialog();
         }
 
@@ -108,7 +108,7 @@ namespace RivDic
         /// <param name="e">EventArgs</param>
         private void btnSearchRoute_Click(object sender, EventArgs e)
         {
-            SearchDialog dlg = new SearchDialog(Constants.Route);
+            DetailDialog dlg = new DetailDialog(Constants.Route);
             dlg.ShowDialog();
         }
 

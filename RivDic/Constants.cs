@@ -57,5 +57,7 @@ namespace RivDic
         public const string Aussetzpunkt = "AUSSETZPUNKT";
         /// <summary>Kommentar</summary>
         public const string Kommentar = "KOMMENTAR";
+        /// <summary>Koordinaten</summary>
+        public const string Koordinaten = "KOORDINATEN";
     }
 }

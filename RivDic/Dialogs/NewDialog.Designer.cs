@@ -64,7 +64,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlButtons.Controls.Add(this.btnAbort);
             this.pnlButtons.Controls.Add(this.btnOk);
-            this.pnlButtons.Location = new System.Drawing.Point(9, 187);
+            this.pnlButtons.Location = new System.Drawing.Point(9, 221);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(0);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(233, 30);
@@ -74,17 +74,18 @@
             // 
             this.fieldsControll.Location = new System.Drawing.Point(13, 13);
             this.fieldsControll.Name = "fieldsControll";
-            this.fieldsControll.Size = new System.Drawing.Size(220, 150);
+            this.fieldsControll.Size = new System.Drawing.Size(220, 200);
             this.fieldsControll.TabIndex = 3;
             // 
             // NewDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(251, 226);
+            this.ClientSize = new System.Drawing.Size(251, 260);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.pnlButtons);
             this.Name = "NewDialog";
+            this.ShowInTaskbar = false;
             this.Text = "NewDialog";
             this.pnlButtons.ResumeLayout(false);
             this.ResumeLayout(false);

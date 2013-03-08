@@ -28,70 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainGUI));
             this.mnuBar = new System.Windows.Forms.MenuStrip();
-            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.sbtnNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRiverNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnRouteNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnStartEndNew = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSearchRiver = new System.Windows.Forms.Button();
             this.btnSearchRoute = new System.Windows.Forms.Button();
             this.btnSearchStartEnd = new System.Windows.Forms.Button();
+            this.mnuNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.smnuNewRiver = new System.Windows.Forms.ToolStripMenuItem();
+            this.smnuNewRoute = new System.Windows.Forms.ToolStripMenuItem();
+            this.smnuNewStartEnd = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // mnuBar
             // 
-            this.mnuBar.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.mnuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile});
+            this.mnuNew});
             this.mnuBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuBar.Location = new System.Drawing.Point(0, 0);
             this.mnuBar.Name = "mnuBar";
-            this.mnuBar.Size = new System.Drawing.Size(163, 24);
+            this.mnuBar.Size = new System.Drawing.Size(451, 24);
             this.mnuBar.TabIndex = 2;
             this.mnuBar.Text = "menuStrip1";
-            // 
-            // mnuFile
-            // 
-            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sbtnNew,
-            this.btnClose});
-            this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(46, 20);
-            this.mnuFile.Text = "Datei";
-            // 
-            // sbtnNew
-            // 
-            this.sbtnNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnRiverNew,
-            this.btnRouteNew,
-            this.btnStartEndNew});
-            this.sbtnNew.Name = "sbtnNew";
-            this.sbtnNew.Size = new System.Drawing.Size(167, 22);
-            this.sbtnNew.Text = "Neu";
-            // 
-            // btnRiverNew
-            // 
-            this.btnRiverNew.Name = "btnRiverNew";
-            this.btnRiverNew.Size = new System.Drawing.Size(171, 22);
-            this.btnRiverNew.Text = "Fluss";
-            this.btnRiverNew.Click += new System.EventHandler(this.btnRiverNew_Click);
-            // 
-            // btnRouteNew
-            // 
-            this.btnRouteNew.Name = "btnRouteNew";
-            this.btnRouteNew.Size = new System.Drawing.Size(171, 22);
-            this.btnRouteNew.Text = "Strecke";
-            this.btnRouteNew.Click += new System.EventHandler(this.btnRouteNew_Click);
-            // 
-            // btnStartEndNew
-            // 
-            this.btnStartEndNew.Name = "btnStartEndNew";
-            this.btnStartEndNew.Size = new System.Drawing.Size(171, 22);
-            this.btnStartEndNew.Text = "Ein-/Aussetzpunkt";
-            this.btnStartEndNew.Click += new System.EventHandler(this.btnStartEndNew_Click);
             // 
             // btnClose
             // 
@@ -131,17 +90,48 @@
             this.btnSearchStartEnd.UseVisualStyleBackColor = true;
             this.btnSearchStartEnd.Click += new System.EventHandler(this.btnSearchStartEnd_Click);
             // 
+            // mnuNew
+            // 
+            this.mnuNew.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.smnuNewRiver,
+            this.smnuNewRoute,
+            this.smnuNewStartEnd});
+            this.mnuNew.Name = "mnuNew";
+            this.mnuNew.Size = new System.Drawing.Size(41, 20);
+            this.mnuNew.Text = "Neu";
+            // 
+            // smnuNewRiver
+            // 
+            this.smnuNewRiver.Name = "smnuNewRiver";
+            this.smnuNewRiver.Size = new System.Drawing.Size(206, 22);
+            this.smnuNewRiver.Text = "Neuer Fluss";
+            this.smnuNewRiver.Click += new System.EventHandler(this.btnRiverNew_Click);
+            // 
+            // smnuNewRoute
+            // 
+            this.smnuNewRoute.Name = "smnuNewRoute";
+            this.smnuNewRoute.Size = new System.Drawing.Size(206, 22);
+            this.smnuNewRoute.Text = "Neue Strecke";
+            this.smnuNewRoute.Click += new System.EventHandler(this.btnRouteNew_Click);
+            // 
+            // smnuNewStartEnd
+            // 
+            this.smnuNewStartEnd.Name = "smnuNewStartEnd";
+            this.smnuNewStartEnd.Size = new System.Drawing.Size(206, 22);
+            this.smnuNewStartEnd.Text = "Neuer Ein-/Aussetzpunkt";
+            this.smnuNewStartEnd.Click += new System.EventHandler(this.btnStartEndNew_Click);
+            // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
-            this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.ClientSize = new System.Drawing.Size(163, 171);
+            this.ClientSize = new System.Drawing.Size(451, 348);
             this.Controls.Add(this.btnSearchStartEnd);
             this.Controls.Add(this.btnSearchRoute);
             this.Controls.Add(this.btnSearchRiver);
             this.Controls.Add(this.mnuBar);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuBar;
             this.Name = "MainGUI";
             this.Text = "RivDic";
@@ -155,15 +145,14 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip mnuBar;
-        private System.Windows.Forms.ToolStripMenuItem mnuFile;
-        private System.Windows.Forms.ToolStripMenuItem sbtnNew;
-        private System.Windows.Forms.ToolStripMenuItem btnRiverNew;
-        private System.Windows.Forms.ToolStripMenuItem btnRouteNew;
         private System.Windows.Forms.ToolStripMenuItem btnClose;
-        private System.Windows.Forms.ToolStripMenuItem btnStartEndNew;
         private System.Windows.Forms.Button btnSearchRiver;
         private System.Windows.Forms.Button btnSearchRoute;
         private System.Windows.Forms.Button btnSearchStartEnd;
+        private System.Windows.Forms.ToolStripMenuItem mnuNew;
+        private System.Windows.Forms.ToolStripMenuItem smnuNewRiver;
+        private System.Windows.Forms.ToolStripMenuItem smnuNewRoute;
+        private System.Windows.Forms.ToolStripMenuItem smnuNewStartEnd;
     }
 }
 

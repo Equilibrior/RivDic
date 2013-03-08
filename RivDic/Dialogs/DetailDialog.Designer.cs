@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailDialog));
             this.gridView = new System.Windows.Forms.DataGridView();
-            this.mnuBrowseCoordinates = new System.Windows.Forms.MenuStrip();
+            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
             this.mnuCalculateRoute = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
-            this.mnuBrowseCoordinates.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridView
@@ -50,18 +52,34 @@
             this.gridView.TabIndex = 0;
             this.gridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridView_CellContentClick);
             // 
-            // mnuBrowseCoordinates
+            // fieldsControll
             // 
-            this.mnuBrowseCoordinates.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.mnuBrowseCoordinates.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fieldsControll.BackColor = System.Drawing.Color.Transparent;
+            this.fieldsControll.Location = new System.Drawing.Point(12, 27);
+            this.fieldsControll.Name = "fieldsControll";
+            this.fieldsControll.Size = new System.Drawing.Size(220, 200);
+            this.fieldsControll.TabIndex = 1;
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSave,
             this.mnuEdit,
             this.mnuDelete,
             this.mnuCalculateRoute});
-            this.mnuBrowseCoordinates.Location = new System.Drawing.Point(0, 0);
-            this.mnuBrowseCoordinates.Name = "mnuBrowseCoordinates";
-            this.mnuBrowseCoordinates.Size = new System.Drawing.Size(372, 24);
-            this.mnuBrowseCoordinates.TabIndex = 2;
-            this.mnuBrowseCoordinates.Text = "Route planen";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(372, 24);
+            this.menuStrip.TabIndex = 2;
+            this.menuStrip.Text = "menuStrip1";
+            // 
+            // mnuSave
+            // 
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(71, 20);
+            this.mnuSave.Text = "Speichern";
+            this.mnuSave.Click += new System.EventHandler(this.mnuSave_Click);
             // 
             // mnuEdit
             // 
@@ -77,20 +95,11 @@
             this.mnuDelete.Text = "Löschen";
             this.mnuDelete.Click += new System.EventHandler(this.mnuDelete_Click);
             // 
-            // fieldsControll
-            // 
-            this.fieldsControll.BackColor = System.Drawing.Color.Transparent;
-            this.fieldsControll.Location = new System.Drawing.Point(12, 27);
-            this.fieldsControll.Name = "fieldsControll";
-            this.fieldsControll.Size = new System.Drawing.Size(220, 200);
-            this.fieldsControll.TabIndex = 1;
-            // 
             // mnuCalculateRoute
             // 
             this.mnuCalculateRoute.Name = "mnuCalculateRoute";
             this.mnuCalculateRoute.Size = new System.Drawing.Size(89, 20);
             this.mnuCalculateRoute.Text = "Route planen";
-            this.mnuCalculateRoute.Visible = false;
             this.mnuCalculateRoute.Click += new System.EventHandler(this.mnuCalculateRoute_Click);
             // 
             // DetailDialog
@@ -101,14 +110,15 @@
             this.ClientSize = new System.Drawing.Size(372, 420);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.gridView);
-            this.Controls.Add(this.mnuBrowseCoordinates);
-            this.MainMenuStrip = this.mnuBrowseCoordinates;
+            this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip;
             this.Name = "DetailDialog";
             this.ShowInTaskbar = false;
             this.Text = "DetailDialog";
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).EndInit();
-            this.mnuBrowseCoordinates.ResumeLayout(false);
-            this.mnuBrowseCoordinates.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -118,7 +128,8 @@
 
         private System.Windows.Forms.DataGridView gridView;
         private FieldsControll fieldsControll;
-        private System.Windows.Forms.MenuStrip mnuBrowseCoordinates;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuCalculateRoute;

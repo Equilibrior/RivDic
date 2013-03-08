@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using RivDic.Dialogs;
 
 namespace RivDic
 {
@@ -16,7 +17,8 @@ namespace RivDic
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (Database.DatabaseLogin())
+            StartExceptionDialog dlg = new StartExceptionDialog();
+            if (dlg.ShowCheckDialog() == DialogResult.OK)
             {
                 Application.Run(new MainGUI());
             }

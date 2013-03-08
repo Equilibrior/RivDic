@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewDialog));
             this.btnAbort = new System.Windows.Forms.Button();
             this.btnOk = new System.Windows.Forms.Button();
             this.pnlButtons = new System.Windows.Forms.Panel();
@@ -87,6 +88,8 @@
             this.ClientSize = new System.Drawing.Size(251, 260);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.pnlButtons);
+            this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "NewDialog";
             this.ShowInTaskbar = false;
             this.Text = "NewDialog";

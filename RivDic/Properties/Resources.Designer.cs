@@ -61,29 +61,62 @@ namespace RivDic.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Einen neuen Fluss erstellen ähnelt.
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static string CreateNewRiver {
+        internal static System.Drawing.Bitmap Clean_16x16 {
             get {
-                return ResourceManager.GetString("CreateNewRiver", resourceCulture);
+                object obj = ResourceManager.GetObject("Clean_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eine neue Strecke erstellen ähnelt.
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static string CreateNewRoute {
+        internal static System.Drawing.Bitmap Clean_32x32 {
             get {
-                return ResourceManager.GetString("CreateNewRoute", resourceCulture);
+                object obj = ResourceManager.GetObject("Clean_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Eine neuen Ein-/Aussetzpunkt erstellen ähnelt.
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static string CreateNewStartEnd {
+        internal static System.Drawing.Bitmap Clean_48x48 {
             get {
-                return ResourceManager.GetString("CreateNewStartEnd", resourceCulture);
+                object obj = ResourceManager.GetObject("Clean_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Error_16x16 {
+            get {
+                object obj = ResourceManager.GetObject("Error_16x16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Error_32x32 {
+            get {
+                object obj = ResourceManager.GetObject("Error_32x32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Error_48x48 {
+            get {
+                object obj = ResourceManager.GetObject("Error_48x48", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -98,11 +131,56 @@ namespace RivDic.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Zeichenfolge, die Wählen Sie aus ob Sie einen neuen Fluss, eine neue Route, oder einen neuen Ein-/Aussetzpunkt erstellen möchten ähnelt.
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Datenbank wurde im angegebenen Pfad gefunden. ähnelt.
         /// </summary>
-        internal static string TxtCreateNewChoice {
+        internal static string txtDbFound {
             get {
-                return ResourceManager.GetString("TxtCreateNewChoice", resourceCulture);
+                return ResourceManager.GetString("txtDbFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Datenbank konnte im angegebenen Pfad nicht gefunden werden. ähnelt.
+        /// </summary>
+        internal static string txtDbNotFound {
+            get {
+                return ResourceManager.GetString("txtDbNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Firebird Server Dienst ist nicht gestartet. ähnelt.
+        /// </summary>
+        internal static string txtFirebirdNotStarted {
+            get {
+                return ResourceManager.GetString("txtFirebirdNotStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Der Firebird Server Dienst ist gestartet. ähnelt.
+        /// </summary>
+        internal static string txtFirebirdStarted {
+            get {
+                return ResourceManager.GetString("txtFirebirdStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Logindaten sind nicht korrekt. ähnelt.
+        /// </summary>
+        internal static string txtLoginNotSuccessfull {
+            get {
+                return ResourceManager.GetString("txtLoginNotSuccessfull", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die Die Logindaten sind korrekt. ähnelt.
+        /// </summary>
+        internal static string txtLoginSuccessfull {
+            get {
+                return ResourceManager.GetString("txtLoginSuccessfull", resourceCulture);
             }
         }
     }

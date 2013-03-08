@@ -22,7 +22,7 @@ namespace RivDic.Dialogs
         public FieldsControll()
         {
             InitializeComponent();
-            this.Size = new Size(220, 400);            
+            this.Size = new Size(220, 400);
         }
 
         #endregion Konstruktor
@@ -31,9 +31,66 @@ namespace RivDic.Dialogs
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Stellt ein Dictionary zum Speichern mit den entsprechenden Werten zusammen
+        /// </summary>
+        /// <param name="context">Der Kontext für den das Dictionary erstellt werden soll</param>
+        /// <returns>Das Dictionary, das in die Datenbank geschrieben werden kann</returns>
+        public Dictionary<string, object> GetSaveDict(string context)
+        {
+            Dictionary<string, object> dict = new Dictionary<string, object>();
+            if (dict.Count > 0)
+            {
+                switch (context)
+                {
+                    case Constants.River:
+                        {
+                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                            dict.Add(Fld.Name, txtRiverName.Text);
+                            dict.Add(Fld.Land, txtRiverLand.Text);
+                            dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
+                            dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
+                            dict.Add(Fld.Ticketpreis, Convert.ToDouble(txtRiverTicketPrice.Text));
+                            break;
+                        }
+                    case Constants.Route:
+                        {
+                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                            IdLabelItem idlItemRiver = cbxRouteRiver.SelectedItem as IdLabelItem;
+                            dict.Add(Fld.FlussId, idlItemRiver.Id);
+                            dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
+                            IdLabelItem idlItemStart = cbxRouteStart.SelectedItem as IdLabelItem;
+                            dict.Add(Fld.Einsetzpunkt, idlItemStart);
+                            IdLabelItem idlItemEnd = cbxRouteRiver.SelectedItem as IdLabelItem;
+                            dict.Add(Fld.Aussetzpunkt, idlItemEnd);
+                            dict.Add(Fld.Kommentar, txtRouteComment.Text);
+                            dict.Add(Fld.Name, txtRouteName.Text);
+                            break;
+                        }
+                    case Constants.StartEnd:
+                        {
+                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                            dict.Add(Fld.Name, txtStartEndName.Text);
+                            dict.Add(Fld.Land, txtStartEndLand.Text);
+                            dict.Add(Fld.Koordinaten, mtxtStartEndCoordinates.Text);
+                            dict.Add(Fld.Einsetzpunkt, chkStartEndStart.Checked.ToString());
+                            dict.Add(Fld.Aussetzpunkt, chkStartEndEnd.Checked.ToString());
+                            dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
+                            break;
+                        }
+                    default:
+                        break;
+                }
+            }
+            return dict;
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Rückt das aktuelle Panel an erste Stelle
         /// </summary>
         /// <param name="context">Kontext des Panels</param>
+        /// <remarks>Muss beim Anzeigen des Controlls immer aufgerufen werden 
+        /// um ein Panel in den Sichtbereich zu rücken</remarks>
         public void ShowPanel(string context)
         {
             switch (context)
@@ -60,7 +117,7 @@ namespace RivDic.Dialogs
                             cbxRouteStart.Items.Add(idlItem);
                             cbxRouteEnd.Items.Add(idlItem);
                         }
-                        
+
                         break;
                     }
                 case Constants.StartEnd:
@@ -73,6 +130,12 @@ namespace RivDic.Dialogs
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Schaltet die ReadOnly Eigenschaft um.
+        /// </summary>
+        /// <param name="panel">Das Panel von dem die Eigenschaft umgeschaltet werden soll</param>
+        /// <param name="value">True, wenn ReadOnly eingeschaltet werden soll</param>
         public void SetPanelReadOnly(string panel, bool value)
         {
             switch (panel)
@@ -85,7 +148,7 @@ namespace RivDic.Dialogs
                         txtRiverTicketPrice.ReadOnly = value;
                         txtRiverWWLevel.ReadOnly = value;
                         chkRiverTicket.Enabled = !value;
-                        break; 
+                        break;
                     }
                 case Constants.Route:
                     {
@@ -105,10 +168,16 @@ namespace RivDic.Dialogs
                         chkStartEndEnd.Enabled = !value;
                         chkStartEndStart.Enabled = !value;
                         break;
-                    }                   
+                    }
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Schreibt die Werte einer DataGridViewRow in die Felder des Panels
+        /// </summary>
+        /// <param name="panel">Von welchem Panel sollen die Felder gefüllt werden.</param>
+        /// <param name="row">DataGridViewRow mit den Daten zum Füllen.</param>
         public void SetContent(string panel, DataGridViewRow row)
         {
             switch (panel)
@@ -143,6 +212,16 @@ namespace RivDic.Dialogs
                         break;
                     }
             }
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Liefert den Inhalt des Koordinaten Feldes
+        /// </summary>
+        /// <returns>Die Koordinaten</returns>
+        public String GetCoordinatesText()
+        {
+            return mtxtStartEndCoordinates.Text;
         }
 
         #endregion Methoden

@@ -15,6 +15,21 @@ namespace RivDic
         public const string Route = "Route";
         /// <summary></summary>
         public const string StartEnd = "StartEnd";
+        /// <summary></summary>
+        public const string TrueString = "true";
+        /// <summary></summary>
+        public const string FalseString = "false";
+
+        #region Datenbank
+
+        /// <summary> Konstante für den Speicherplatz der Datenbank</summary>
+        public const string DbPath = "DatabasePath";
+        /// <summary> Konstante für den User</summary>
+        public const string DbUser = "DatabaseUser";
+        /// <summary> Konstante für das Passwort</summary>
+        public const string DbPassword = "DatabasePassword";
+
+        #endregion Datenbank
     }
 
     /// ============================================================================================================================
@@ -28,7 +43,6 @@ namespace RivDic
         public const string Laender = "LAENDER";
         /// <summary></summary>
         public const string StartEnde = "STARTENDE";
-
 
     }
 

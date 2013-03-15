@@ -334,7 +334,7 @@ namespace RivDic
         /// <returns>True, falls das Speichern geklappt hat</returns>
         public static Boolean SaveData(String tableName, Dictionary<string, object> dict)
         {
-            if (dict.Count > 0)
+            if (dict.Count >= 0)
                 return false;
             FbCommand fbCommand = new FbCommand();
             FbTransaction fbTransaction = fbConnection.BeginTransaction();

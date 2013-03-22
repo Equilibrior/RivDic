@@ -26,7 +26,8 @@ namespace RivDic.Dialogs
             this.context = context;
             LoadData(context);
             fieldsControll.ShowPanel(context);
-            fieldsControll.SetPanelReadOnly(context, true);            
+            fieldsControll.SetPanelReadOnly(context, true);
+            filterControl.ShowPanel(context);
             gridView.ReadOnly = true;
             EnableCommands();
         }
@@ -38,6 +39,8 @@ namespace RivDic.Dialogs
         private string context;
 
         private Boolean editMode = false;
+
+        private bool rowLoaded { get; set; }
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
@@ -62,10 +65,12 @@ namespace RivDic.Dialogs
 
         private void EnableCommands()
         {
-            mnuEdit.Visible = !editMode;
+            mnuEdit.Visible = !editMode && rowLoaded;
             mnuSave.Visible = editMode;
+            mnuDelete.Enabled = rowLoaded;
             if (context.Equals(Constants.StartEnd))
                 mnuCalculateRoute.Visible = true;
+            mnuCalculateRoute.Enabled = rowLoaded;
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -135,6 +140,7 @@ namespace RivDic.Dialogs
                 sb.Append(" WHERE ID = '" + id + "'");
                 Database.ExecuteQuery(sb.ToString());
                 gridView.Rows.Remove(gridView.SelectedRows[0]);
+                EnableCommands();
             }
         }
 
@@ -142,6 +148,7 @@ namespace RivDic.Dialogs
         {
             DataGridViewRow row = gridView.Rows[e.RowIndex];
             fieldsControll.SetContent(context, row);
+            EnableCommands();
         }
 
         private void mnuCalculateRoute_Click(object sender, EventArgs e)

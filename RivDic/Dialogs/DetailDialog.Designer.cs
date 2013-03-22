@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DetailDialog));
             this.gridView = new System.Windows.Forms.DataGridView();
-            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuCalculateRoute = new System.Windows.Forms.ToolStripMenuItem();
+            this.filterControl = new RivDic.Dialogs.FilterControl();
+            this.fieldsControll = new RivDic.Dialogs.FieldsControll();
             ((System.ComponentModel.ISupportInitialize)(this.gridView)).BeginInit();
             this.menuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -45,20 +46,12 @@
             this.gridView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.gridView.Location = new System.Drawing.Point(12, 239);
+            this.gridView.Location = new System.Drawing.Point(12, 310);
             this.gridView.MultiSelect = false;
             this.gridView.Name = "gridView";
-            this.gridView.Size = new System.Drawing.Size(348, 169);
+            this.gridView.Size = new System.Drawing.Size(560, 169);
             this.gridView.TabIndex = 0;
             this.gridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridView_CellContentClick);
-            // 
-            // fieldsControll
-            // 
-            this.fieldsControll.BackColor = System.Drawing.Color.Transparent;
-            this.fieldsControll.Location = new System.Drawing.Point(12, 27);
-            this.fieldsControll.Name = "fieldsControll";
-            this.fieldsControll.Size = new System.Drawing.Size(220, 200);
-            this.fieldsControll.TabIndex = 1;
             // 
             // menuStrip
             // 
@@ -70,7 +63,7 @@
             this.mnuCalculateRoute});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(372, 24);
+            this.menuStrip.Size = new System.Drawing.Size(584, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
@@ -102,17 +95,37 @@
             this.mnuCalculateRoute.Text = "Route planen";
             this.mnuCalculateRoute.Click += new System.EventHandler(this.mnuCalculateRoute_Click);
             // 
+            // filterControl
+            // 
+            this.filterControl.BackColor = System.Drawing.Color.Transparent;
+            this.filterControl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterControl.Location = new System.Drawing.Point(12, 233);
+            this.filterControl.MinimumSize = new System.Drawing.Size(565, 2);
+            this.filterControl.Name = "filterControl";
+            this.filterControl.Size = new System.Drawing.Size(565, 71);
+            this.filterControl.TabIndex = 3;
+            // 
+            // fieldsControll
+            // 
+            this.fieldsControll.BackColor = System.Drawing.Color.Transparent;
+            this.fieldsControll.Location = new System.Drawing.Point(12, 27);
+            this.fieldsControll.Name = "fieldsControll";
+            this.fieldsControll.Size = new System.Drawing.Size(220, 200);
+            this.fieldsControll.TabIndex = 1;
+            // 
             // DetailDialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.ClientSize = new System.Drawing.Size(372, 420);
+            this.ClientSize = new System.Drawing.Size(584, 491);
+            this.Controls.Add(this.filterControl);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.gridView);
             this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
+            this.MinimumSize = new System.Drawing.Size(600, 38);
             this.Name = "DetailDialog";
             this.ShowInTaskbar = false;
             this.Text = "DetailDialog";
@@ -133,5 +146,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuCalculateRoute;
+        private FilterControl filterControl;
     }
 }

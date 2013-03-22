@@ -105,6 +105,12 @@
     <Compile Include="Dialogs\DetailDialog.Designer.cs">
       <DependentUpon>DetailDialog.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\FilterControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Dialogs\FilterControl.Designer.cs">
+      <DependentUpon>FilterControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\MainGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +135,9 @@
     <Compile Include="Settings.cs" />
     <EmbeddedResource Include="Dialogs\FieldsControll.resx">
       <DependentUpon>FieldsControll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dialogs\FilterControl.resx">
+      <DependentUpon>FilterControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dialogs\MainGUI.resx">
       <DependentUpon>MainGUI.cs</DependentUpon>

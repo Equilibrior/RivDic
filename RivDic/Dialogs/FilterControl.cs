@@ -14,6 +14,10 @@ namespace RivDic.Dialogs
     public partial class FilterControl : UserControl
     {
         #region Konstruktor
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Konstruktor
+        /// </summary>
         public FilterControl()
         {
             InitializeComponent();
@@ -22,6 +26,17 @@ namespace RivDic.Dialogs
         #endregion Konstruktor
 
         #region Methoden
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Verbindet die Events
+        /// </summary>
+        private void ConnectEvents()
+        {
+            btnFilterRiver.Click += btnFilterRiver_Click;
+            btnFilterRoute.Click += btnFilterRoute_Click;
+            btnFilterStartEnd.Click += btnFilterStartEnd_Click;
+        }
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
@@ -69,6 +84,38 @@ namespace RivDic.Dialogs
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFilterRiver_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFilterStartEnd_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFilterRoute_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
         #endregion Methoden
 
     }

@@ -49,7 +49,7 @@
             this.mnuBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuBar.Location = new System.Drawing.Point(0, 0);
             this.mnuBar.Name = "mnuBar";
-            this.mnuBar.Size = new System.Drawing.Size(451, 24);
+            this.mnuBar.Size = new System.Drawing.Size(166, 24);
             this.mnuBar.TabIndex = 2;
             this.mnuBar.Text = "menuStrip1";
             // 
@@ -128,7 +128,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LavenderBlush;
             this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.ClientSize = new System.Drawing.Size(451, 348);
+            this.ClientSize = new System.Drawing.Size(166, 172);
             this.Controls.Add(this.btnSearchStartEnd);
             this.Controls.Add(this.btnSearchRoute);
             this.Controls.Add(this.btnSearchRiver);

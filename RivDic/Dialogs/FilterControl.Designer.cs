@@ -61,6 +61,9 @@
             this.lblName = new System.Windows.Forms.Label();
             this.lblStartEndeEnd = new System.Windows.Forms.Label();
             this.lblStartEndeStart = new System.Windows.Forms.Label();
+            this.btnFilterRoute = new System.Windows.Forms.Button();
+            this.btnFilterRiver = new System.Windows.Forms.Button();
+            this.btnFilterStartEnd = new System.Windows.Forms.Button();
             this.pnlRoute.SuspendLayout();
             this.pnlRiver.SuspendLayout();
             this.pnlStartEnd.SuspendLayout();
@@ -69,6 +72,7 @@
             // pnlRoute
             // 
             this.pnlRoute.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRoute.Controls.Add(this.btnFilterRoute);
             this.pnlRoute.Controls.Add(this.cbxRouteStart);
             this.pnlRoute.Controls.Add(this.cbxRouteEnd);
             this.pnlRoute.Controls.Add(this.cbxRouteRiver);
@@ -82,7 +86,7 @@
             this.pnlRoute.Location = new System.Drawing.Point(5, 160);
             this.pnlRoute.Margin = new System.Windows.Forms.Padding(5);
             this.pnlRoute.Name = "pnlRoute";
-            this.pnlRoute.Size = new System.Drawing.Size(570, 63);
+            this.pnlRoute.Size = new System.Drawing.Size(565, 63);
             this.pnlRoute.TabIndex = 7;
             // 
             // cbxRouteStart
@@ -132,7 +136,7 @@
             // 
             // txtRouteWWLevel
             // 
-            this.txtRouteWWLevel.Location = new System.Drawing.Point(439, 4);
+            this.txtRouteWWLevel.Location = new System.Drawing.Point(446, 3);
             this.txtRouteWWLevel.Name = "txtRouteWWLevel";
             this.txtRouteWWLevel.Size = new System.Drawing.Size(116, 20);
             this.txtRouteWWLevel.TabIndex = 4;
@@ -174,6 +178,7 @@
             // pnlRiver
             // 
             this.pnlRiver.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRiver.Controls.Add(this.btnFilterRiver);
             this.pnlRiver.Controls.Add(this.lblRiverTicketPricer);
             this.pnlRiver.Controls.Add(this.chkRiverTicket);
             this.pnlRiver.Controls.Add(this.txtRiverTicketPrice);
@@ -279,6 +284,7 @@
             // pnlStartEnd
             // 
             this.pnlStartEnd.BackColor = System.Drawing.Color.Transparent;
+            this.pnlStartEnd.Controls.Add(this.btnFilterStartEnd);
             this.pnlStartEnd.Controls.Add(this.mtxtStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.lblStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.chkStartEndStart);
@@ -385,6 +391,33 @@
             this.lblStartEndeStart.TabIndex = 0;
             this.lblStartEndeStart.Text = "Einsetzpunkt";
             // 
+            // btnFilterRoute
+            // 
+            this.btnFilterRoute.Location = new System.Drawing.Point(487, 37);
+            this.btnFilterRoute.Name = "btnFilterRoute";
+            this.btnFilterRoute.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterRoute.TabIndex = 15;
+            this.btnFilterRoute.Text = "Filter";
+            this.btnFilterRoute.UseVisualStyleBackColor = true;
+            // 
+            // btnFilterRiver
+            // 
+            this.btnFilterRiver.Location = new System.Drawing.Point(487, 30);
+            this.btnFilterRiver.Name = "btnFilterRiver";
+            this.btnFilterRiver.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterRiver.TabIndex = 16;
+            this.btnFilterRiver.Text = "Filter";
+            this.btnFilterRiver.UseVisualStyleBackColor = true;
+            // 
+            // btnFilterStartEnd
+            // 
+            this.btnFilterStartEnd.Location = new System.Drawing.Point(487, 32);
+            this.btnFilterStartEnd.Name = "btnFilterStartEnd";
+            this.btnFilterStartEnd.Size = new System.Drawing.Size(75, 23);
+            this.btnFilterStartEnd.TabIndex = 17;
+            this.btnFilterStartEnd.Text = "Filter";
+            this.btnFilterStartEnd.UseVisualStyleBackColor = true;
+            // 
             // FilterControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -394,7 +427,7 @@
             this.Controls.Add(this.pnlStartEnd);
             this.Controls.Add(this.pnlRiver);
             this.Controls.Add(this.pnlRoute);
-            this.MinimumSize = new System.Drawing.Size(565, 0);
+            this.MinimumSize = new System.Drawing.Size(565, 2);
             this.Name = "FilterControl";
             this.Size = new System.Drawing.Size(576, 361);
             this.pnlRoute.ResumeLayout(false);
@@ -442,6 +475,9 @@
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label lblStartEndeEnd;
         private System.Windows.Forms.Label lblStartEndeStart;
+        private System.Windows.Forms.Button btnFilterRoute;
+        private System.Windows.Forms.Button btnFilterRiver;
+        private System.Windows.Forms.Button btnFilterStartEnd;
 
     }
 }

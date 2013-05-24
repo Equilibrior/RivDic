@@ -483,15 +483,15 @@ namespace RivDic
         private static StringBuilder BuildUpdateCommand(String tableName, Dictionary<string, object> dict)
         {
             StringBuilder sb = new StringBuilder();
+            sb.Append("UPDATE ");
+            sb.Append(tableName);
+            sb.Append(" SET " + Fld.Id + "=");
+            sb.Append("'" + dict[Fld.Id] + "', ");
             switch (tableName)
             {
                 case Tbl.Fluesse:
                 default:
                     {
-                        sb.Append("UPDATE ");
-                        sb.Append(tableName);
-                        sb.Append(" SET " + Fld.Id + "=");
-                        sb.Append("'" + dict[Fld.Id] + "', ");
                         sb.Append(Fld.WWLevel + "=");
                         sb.Append("'" + dict[Fld.WWLevel] + "', ");
                         sb.Append(Fld.Name + "=");
@@ -506,10 +506,6 @@ namespace RivDic
                     }
                 case Tbl.FlussAbschnitt:
                     {
-                        sb.Append("UPDATE ");
-                        sb.Append(tableName);
-                        sb.Append(" SET " + Fld.Id + "=");
-                        sb.Append("'" + dict[Fld.Id] + "', ");
                         sb.Append(Fld.FlussId + "=");
                         sb.Append("'" + dict[Fld.FlussId] + "', ");
                         sb.Append(Fld.WWLevel + "=");
@@ -528,10 +524,6 @@ namespace RivDic
                     }
                 case Tbl.StartEnde:
                     {
-                        sb.Append("UPDATE ");
-                        sb.Append(tableName);
-                        sb.Append(" SET " + Fld.Id + "=");
-                        sb.Append("'" + dict[Fld.Id] + "', ");
                         sb.Append(Fld.Name + "=");
                         sb.Append("'" + dict[Fld.Name] + "', ");
                         sb.Append(Fld.Land + "=");
@@ -550,6 +542,19 @@ namespace RivDic
             sb.Append("WHERE" + Fld.Id + "='" + dict[Fld.Id] + "'");
             return sb;
         }
+
+
+        //public static DataTable FilterData(String tableName, Dictionary<string, string> dict)
+        //{
+        //    //StringBuilder sb = new StringBuilder();
+        //    //sb.Append("SELECT * FROM ");
+        //    //sb.Append(tableName + "WHERE ");
+        //    //foreach (string field in dict.Keys)
+        //    //{
+                
+        //    //}
+        //    //return sb;
+        //}
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>

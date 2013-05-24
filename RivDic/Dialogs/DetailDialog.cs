@@ -36,10 +36,22 @@ namespace RivDic.Dialogs
 
         #region Properties
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Context des Dialoges
+        /// </summary>
         private string context;
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Ist der EditMode eingeschaltet?
+        /// </summary>
         private Boolean editMode = false;
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Ist eine Datenzeile geladen
+        /// </summary>
         private bool rowLoaded { get; set; }
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -63,6 +75,21 @@ namespace RivDic.Dialogs
 
         #region Methoden
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Verbindet die Events
+        /// </summary>
+        private void ConnectEvents()
+        {
+            filterControl.btnFilterRiver.Click +=btnFilter_Click;
+            filterControl.btnFilterRoute.Click += btnFilter_Click;
+            filterControl.btnFilterStartEnd.Click += btnFilter_Click;
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Bestimmt ob Schaltfläche ein- oder ausgeschaltet sind
+        /// </summary>
         private void EnableCommands()
         {
             mnuEdit.Visible = !editMode && rowLoaded;
@@ -102,7 +129,12 @@ namespace RivDic.Dialogs
             }
         }
 
-
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Schaltet den Editmodus ein.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuEdit_Click(object sender, EventArgs e)
         {
             editMode = true;
@@ -110,6 +142,12 @@ namespace RivDic.Dialogs
             EnableCommands();
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Speichert die Daten
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuSave_Click(object sender, EventArgs e)
         {
             if (Database.SaveData(tableName, fieldsControll.GetSaveDict(context)))
@@ -123,6 +161,12 @@ namespace RivDic.Dialogs
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Löscht den momentan geladenen Datensatz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuDelete_Click(object sender, EventArgs e)
         {
             if (gridView.SelectedRows.Count == 1)
@@ -144,6 +188,12 @@ namespace RivDic.Dialogs
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Lädt den ausgewählten Datensatz
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void gridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             DataGridViewRow row = gridView.Rows[e.RowIndex];
@@ -151,11 +201,30 @@ namespace RivDic.Dialogs
             EnableCommands();
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Ruft die Routenberechnung auf
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void mnuCalculateRoute_Click(object sender, EventArgs e)
         {
             string coordinates = fieldsControll.GetCoordinatesText();
             System.Diagnostics.Process.Start("https://maps.google.de/maps?q=" + coordinates);
         }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Holt das Dictionary mit den zu suchenden Daten aus dem Dictionary und lässt Filtern
+        /// </summary>
+        /// <param name="sender">Sender</param>
+        /// <param name="e">EventArgs</param>
+        private void btnFilter_Click(object sender, EventArgs e)
+        {
+            Dictionary<string, string> dict = filterControl.GetFilterDict();            
+            //gridView.DataSource = Database.FilterData(tableName, dict);
+        }
+
 
         #endregion Methoden
 

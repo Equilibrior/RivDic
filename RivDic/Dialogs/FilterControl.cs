@@ -25,19 +25,14 @@ namespace RivDic.Dialogs
 
         #endregion Konstruktor
 
+        #region Properties
+
+        private string tableName;
+
+        #endregion Properties
+
         #region Methoden
-
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// Verbindet die Events
-        /// </summary>
-        private void ConnectEvents()
-        {
-            btnFilterRiver.Click += btnFilterRiver_Click;
-            btnFilterRoute.Click += btnFilterRoute_Click;
-            btnFilterStartEnd.Click += btnFilterStartEnd_Click;
-        }
-
+        
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
         /// Rückt das aktuelle Panel an erste Stelle
@@ -52,11 +47,13 @@ namespace RivDic.Dialogs
                 case Constants.River:
                     {
                         pnlRiver.Location = new Point(0, 0);
+                        tableName = Tbl.Fluesse;
                         break;
                     }
                 case Constants.Route:
                     {
                         pnlRoute.Location = new Point(0, 0);
+                        tableName = Tbl.FlussAbschnitt;
                         DataTable dt = Database.LoadDataTable(Tbl.Fluesse);
                         foreach (DataRow row in dt.Rows)
                         {
@@ -71,12 +68,12 @@ namespace RivDic.Dialogs
                             cbxRouteStart.Items.Add(idlItem);
                             cbxRouteEnd.Items.Add(idlItem);
                         }
-
                         break;
                     }
                 case Constants.StartEnd:
                     {
                         pnlStartEnd.Location = new Point(0, 0);
+                        tableName = Tbl.StartEnde;
                         break;
                     }
                 default:
@@ -84,38 +81,22 @@ namespace RivDic.Dialogs
             }
         }
 
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnFilterRiver_Click(object sender, EventArgs e)
+        public Dictionary<string, string> GetFilterDict()
         {
-            throw new NotImplementedException();
-        }
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            if (!String.IsNullOrEmpty(txtRiverName.Text))
+                dict.Add(Fld.Name, txtRiverName.Text);
+            if (!string.IsNullOrEmpty(txtRiverLand.Text))
+                dict.Add(Fld.Land, txtRiverLand.Text);
+            dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
+            if (string.IsNullOrEmpty(txtRiverTicketPrice.Text))
+                dict.Add(Fld.Ticketpreis, txtRiverTicketPrice.Text);
+            if (string.IsNullOrEmpty(txtRiverWWLevel.Text))
+                dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
 
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnFilterStartEnd_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+            return dict;
         }
-
-        /// ------------------------------------------------------------------------------------------------------------------------
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void btnFilterRoute_Click(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
+        
         #endregion Methoden
 
     }

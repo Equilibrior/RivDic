@@ -57,6 +57,11 @@ namespace RivDic.Dialogs
             else
                 isLoginDataIncorrect = Convert.ToBoolean(loginDataIncorrect);
 
+            if (loginrslt == LoginResult.ConnectionStringArgumentError || loginrslt == LoginResult.Error)
+            {
+                isFirebirdNotStarted = isDBNotFound = isLoginDataIncorrect = true;
+            }
+
             if (isFirebirdNotStarted)
             {
                 picFirebirdStarted.Image = Properties.Resources.Error_16x16;

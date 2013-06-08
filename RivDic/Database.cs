@@ -25,6 +25,10 @@ namespace RivDic
 
         private static List<string> countryList;
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Liste aller Länder zum Füllen der Tabelle
+        /// </summary>
         public static List<string> CountryList
         {
             get
@@ -543,18 +547,28 @@ namespace RivDic
             return sb;
         }
 
-
-        //public static DataTable FilterData(String tableName, Dictionary<string, string> dict)
-        //{
-        //    //StringBuilder sb = new StringBuilder();
-        //    //sb.Append("SELECT * FROM ");
-        //    //sb.Append(tableName + "WHERE ");
-        //    //foreach (string field in dict.Keys)
-        //    //{
-                
-        //    //}
-        //    //return sb;
-        //}
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Filter die Einträge der übergebenen Tabelle anhand des übergegeben Dictionaries
+        /// </summary>
+        /// <param name="tableName">Tabelle die gefiltert werden soll</param>
+        /// <param name="dict">Dictionary mit den Werten die gefiltert werden sollen</param>
+        /// <returns>DataTable mit den gefilterten Werten</returns>
+        public static DataTable FilterData(String tableName, Dictionary<string, string> dict)
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append("SELECT * FROM " + tableName);
+            sb.Append(" WHERE ");
+            int index = 0;
+            foreach (string field in dict.Keys)
+            {
+                sb.Append(field + " = " + dict[field]);
+                if (index < dict.Count)
+                    sb.Append(" OR ");
+            }
+            DataTable dt = ExecuteQuery(sb.ToString());
+            return dt;
+        }
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>

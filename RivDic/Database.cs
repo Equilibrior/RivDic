@@ -305,27 +305,10 @@ namespace RivDic
         /// <returns>Der Inhalt der Tabelle als DataTable</returns>
         public static DataTable LoadDataTable(String tableName)
         {
-            DataTable dt = new DataTable();
-
-            FbTransaction fbTransaction = fbConnection.BeginTransaction();
-
-            FbCommand fbCommand = new FbCommand();
-
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * FROM ");
             sb.Append(tableName.ToUpper());
-
-            fbCommand.CommandText = sb.ToString();
-            fbCommand.Connection = fbConnection;
-            fbCommand.Transaction = fbTransaction;
-
-            FbDataAdapter fbAdapter = new FbDataAdapter(fbCommand);
-            fbAdapter.Fill(dt);
-
-            fbTransaction.Dispose();
-            fbCommand.Dispose();
-            fbAdapter.Dispose();
-
+            DataTable dt = ExecuteQuery(sb.ToString());            
             return dt;
         }
 

@@ -38,46 +38,49 @@ namespace RivDic.Dialogs
         public Dictionary<string, object> GetSaveDict(string context)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
-                switch (context)
-                {
-                    case Constants.River:
-                        {
-                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
-                            dict.Add(Fld.Name, txtRiverName.Text);
-                            dict.Add(Fld.Land, txtRiverLand.Text);
-                            dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
-                            dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
+            switch (context)
+            {
+                case Constants.River:
+                    {
+                        dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                        dict.Add(Fld.Name, txtRiverName.Text);
+                        dict.Add(Fld.Land, txtRiverLand.Text);
+                        dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
+                        dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
+                        if (!String.IsNullOrEmpty(txtRiverTicketPrice.Text))
                             dict.Add(Fld.Ticketpreis, Convert.ToDouble(txtRiverTicketPrice.Text));
-                            break;
-                        }
-                    case Constants.Route:
-                        {
-                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
-                            IdLabelItem idlItemRiver = cbxRouteRiver.SelectedItem as IdLabelItem;
-                            dict.Add(Fld.FlussId, idlItemRiver.Id);
-                            dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
-                            IdLabelItem idlItemStart = cbxRouteStart.SelectedItem as IdLabelItem;
-                            dict.Add(Fld.Einsetzpunkt, idlItemStart);
-                            IdLabelItem idlItemEnd = cbxRouteRiver.SelectedItem as IdLabelItem;
-                            dict.Add(Fld.Aussetzpunkt, idlItemEnd);
-                            dict.Add(Fld.Kommentar, txtRouteComment.Text);
-                            dict.Add(Fld.Name, txtRouteName.Text);
-                            break;
-                        }
-                    case Constants.StartEnd:
-                        {
-                            dict.Add(Fld.Id, Guid.NewGuid().ToString());
-                            dict.Add(Fld.Name, txtStartEndName.Text);
-                            dict.Add(Fld.Land, txtStartEndLand.Text);
-                            dict.Add(Fld.Koordinaten, mtxtStartEndCoordinates.Text);
-                            dict.Add(Fld.Einsetzpunkt, chkStartEndStart.Checked.ToString());
-                            dict.Add(Fld.Aussetzpunkt, chkStartEndEnd.Checked.ToString());
-                            dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
-                            break;
-                        }
-                    default:
+                        else
+                            dict.Add(Fld.Ticketpreis, 0.0);
                         break;
-                }
+                    }
+                case Constants.Route:
+                    {
+                        dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                        IdLabelItem idlItemRiver = cbxRouteRiver.SelectedItem as IdLabelItem;
+                        dict.Add(Fld.FlussId, idlItemRiver.Id);
+                        dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
+                        IdLabelItem idlItemStart = cbxRouteStart.SelectedItem as IdLabelItem;
+                        dict.Add(Fld.Einsetzpunkt, idlItemStart);
+                        IdLabelItem idlItemEnd = cbxRouteRiver.SelectedItem as IdLabelItem;
+                        dict.Add(Fld.Aussetzpunkt, idlItemEnd);
+                        dict.Add(Fld.Kommentar, txtRouteComment.Text);
+                        dict.Add(Fld.Name, txtRouteName.Text);
+                        break;
+                    }
+                case Constants.StartEnd:
+                    {
+                        dict.Add(Fld.Id, Guid.NewGuid().ToString());
+                        dict.Add(Fld.Name, txtStartEndName.Text);
+                        dict.Add(Fld.Land, txtStartEndLand.Text);
+                        dict.Add(Fld.Koordinaten, mtxtStartEndCoordinates.Text);
+                        dict.Add(Fld.Einsetzpunkt, chkStartEndStart.Checked.ToString());
+                        dict.Add(Fld.Aussetzpunkt, chkStartEndEnd.Checked.ToString());
+                        dict.Add(Fld.WWLevel, txtRouteWWLevel.Text);
+                        break;
+                    }
+                default:
+                    break;
+            }
             return dict;
         }
 

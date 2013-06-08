@@ -29,6 +29,7 @@ namespace RivDic.Dialogs
             fieldsControll.SetPanelReadOnly(context, true);
             filterControl.ShowPanel(context);
             gridView.ReadOnly = true;
+            InitDialog();
             EnableCommands();
         }
 
@@ -86,6 +87,14 @@ namespace RivDic.Dialogs
             filterControl.btnFilterStartEnd.Click += btnFilter_Click;
         }
 
+        private void InitDialog()
+        {
+            mnuEdit.Visible = true;
+            mnuSave.Visible = false;
+            mnuDelete.Visible = true;
+            mnuCalculateRoute.Visible = true;
+        }
+
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
         /// Bestimmt ob Schaltfläche ein- oder ausgeschaltet sind
@@ -93,8 +102,8 @@ namespace RivDic.Dialogs
         private void EnableCommands()
         {
             mnuEdit.Visible = !editMode && rowLoaded;
-            mnuSave.Visible = editMode;
-            mnuDelete.Enabled = rowLoaded;
+            mnuSave.Visible = editMode && rowLoaded;
+            mnuDelete.Enabled = editMode && rowLoaded;
             if (context.Equals(Constants.StartEnd))
                 mnuCalculateRoute.Visible = true;
             mnuCalculateRoute.Enabled = rowLoaded;
@@ -198,6 +207,7 @@ namespace RivDic.Dialogs
         {
             DataGridViewRow row = gridView.Rows[e.RowIndex];
             fieldsControll.SetContent(context, row);
+            rowLoaded = true;
             EnableCommands();
         }
 

@@ -38,8 +38,6 @@ namespace RivDic.Dialogs
         public Dictionary<string, object> GetSaveDict(string context)
         {
             Dictionary<string, object> dict = new Dictionary<string, object>();
-            if (dict.Count > 0)
-            {
                 switch (context)
                 {
                     case Constants.River:
@@ -80,7 +78,6 @@ namespace RivDic.Dialogs
                     default:
                         break;
                 }
-            }
             return dict;
         }
 

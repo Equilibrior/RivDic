@@ -334,37 +334,14 @@ namespace RivDic
         /// <returns>True, falls das Speichern geklappt hat</returns>
         public static Boolean SaveData(String tableName, Dictionary<string, object> dict)
         {
-            if (dict.Count >= 0)
+            if (dict.Count <= 0)
                 return false;
-            FbCommand fbCommand = new FbCommand();
-            FbTransaction fbTransaction = fbConnection.BeginTransaction();
-
+            string sql = string.Empty;
             if (CheckIdExists(tableName, dict[Fld.Id]))
-                fbCommand.CommandText = BuildUpdateCommand(tableName, dict).ToString();
+                sql = BuildUpdateCommand(tableName, dict).ToString();
             else
-                fbCommand.CommandText = BuildSaveCommand(tableName, dict).ToString();
-
-            fbCommand.Connection = fbConnection;
-            fbCommand.Transaction = fbTransaction;
-#if DEBUG
-            fbCommand.ExecuteNonQuery();
-            fbTransaction.Commit();
-#else
-            try
-            {
-                fbCommand.ExecuteNonQuery();
-                fbTransaction.Commit();
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                fbTransaction.Dispose();
-                fbCommand.Dispose();
-            }
-#endif
+                sql = BuildSaveCommand(tableName, dict).ToString();
+            DataTable dt = Database.ExecuteQuery(sql);
             return true;
         }
 
@@ -381,7 +358,7 @@ namespace RivDic
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT COUNT(*) FROM " + tableName);
-            sb.Append("WHERE " + Fld.Id + "='" + id + "'");
+            sb.Append(" WHERE " + Fld.Id + "='" + id + "'");
             DataTable dt = ExecuteQuery(sb.ToString());
             return dt.Rows.Count <= 1;
         }
@@ -539,7 +516,7 @@ namespace RivDic
                         break;
                     }
             }
-            sb.Append("WHERE" + Fld.Id + "='" + dict[Fld.Id] + "'");
+            sb.Append(" WHERE " + Fld.Id + "='" + dict[Fld.Id] + "'");
             return sb;
         }
 

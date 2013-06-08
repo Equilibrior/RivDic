@@ -232,7 +232,7 @@ namespace RivDic.Dialogs
         private void btnFilter_Click(object sender, EventArgs e)
         {
             Dictionary<string, string> dict = filterControl.GetFilterDict();            
-            //gridView.DataSource = Database.FilterData(tableName, dict);
+            gridView.DataSource = Database.FilterData(tableName, dict);
         }
 
 

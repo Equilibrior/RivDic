@@ -27,12 +27,10 @@ namespace RivDic.Dialogs
 
         #region Properties
 
-        private string tableName;
-
         #endregion Properties
 
         #region Methoden
-        
+
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
         /// Rückt das aktuelle Panel an erste Stelle
@@ -47,13 +45,11 @@ namespace RivDic.Dialogs
                 case Constants.River:
                     {
                         pnlRiver.Location = new Point(0, 0);
-                        tableName = Tbl.Fluesse;
                         break;
                     }
                 case Constants.Route:
                     {
                         pnlRoute.Location = new Point(0, 0);
-                        tableName = Tbl.FlussAbschnitt;
                         DataTable dt = Database.LoadDataTable(Tbl.Fluesse);
                         foreach (DataRow row in dt.Rows)
                         {
@@ -73,7 +69,6 @@ namespace RivDic.Dialogs
                 case Constants.StartEnd:
                     {
                         pnlStartEnd.Location = new Point(0, 0);
-                        tableName = Tbl.StartEnde;
                         break;
                     }
                 default:
@@ -81,9 +76,26 @@ namespace RivDic.Dialogs
             }
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Stellt ein Dictionary anhand der ausgefüllten Filterfelder zusammen und gibt es zurück
+        /// </summary>
+        /// <returns>Dictionary mit den gefüllten Feldern und ihren Werten</returns>
         public Dictionary<string, string> GetFilterDict()
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
+            //Route Panel
+            if (!String.IsNullOrEmpty(txtRouteName.Text))
+                dict.Add(Fld.Name, txtRouteName.Text);
+            if (!String.IsNullOrEmpty(cbxRouteRiver.Text))
+                dict.Add(Fld.Name, cbxRouteRiver.Text);
+            if (!String.IsNullOrEmpty(cbxRouteStart.Text))
+                dict.Add(Fld.Name, cbxRouteStart.Text);
+            if (!String.IsNullOrEmpty(cbxRouteEnd.Text))
+                dict.Add(Fld.Name, cbxRouteEnd.Text);
+            if (!String.IsNullOrEmpty(txtRouteWWLevel.Text))
+                dict.Add(Fld.Name, txtRouteWWLevel.Text);
+            //River Panel
             if (!String.IsNullOrEmpty(txtRiverName.Text))
                 dict.Add(Fld.Name, txtRiverName.Text);
             if (!string.IsNullOrEmpty(txtRiverLand.Text))
@@ -93,10 +105,19 @@ namespace RivDic.Dialogs
                 dict.Add(Fld.Ticketpreis, txtRiverTicketPrice.Text);
             if (string.IsNullOrEmpty(txtRiverWWLevel.Text))
                 dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
+            //Sart End Panel
+            if (!String.IsNullOrEmpty(txtStartEndName.Text))
+                dict.Add(Fld.Name, txtStartEndName.Text);
+            if (!String.IsNullOrEmpty(txtStartEndLand.Text))
+                dict.Add(Fld.Name, txtStartEndLand.Text);
+            dict.Add(Fld.Name, chkStartEndEnd.Checked.ToString());
+            dict.Add(Fld.Name, chkStartEndStart.Checked.ToString());
+            if (!String.IsNullOrEmpty(mtxtStartEndCoordinates.Text))
+                dict.Add(Fld.Name, mtxtStartEndCoordinates.Text);
 
             return dict;
         }
-        
+
         #endregion Methoden
 
     }

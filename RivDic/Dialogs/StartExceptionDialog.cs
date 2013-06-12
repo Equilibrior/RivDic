@@ -26,7 +26,7 @@ namespace RivDic.Dialogs
         public StartExceptionDialog()
         {
             InitializeComponent();
-            CheckRequirements(null, null, null);
+            CheckRequirements();
         }
 
         #endregion Konstruktor
@@ -39,30 +39,19 @@ namespace RivDic.Dialogs
 
         #region Methoden
 
-        private void CheckRequirements(string firebirdNotStarted, string dbNotFound, string loginDataIncorrect)
+        private void CheckRequirements()
         {
-            Boolean isFirebirdNotStarted;
-            Boolean isDBNotFound;
-            Boolean isLoginDataIncorrect;
-            if (String.IsNullOrEmpty(firebirdNotStarted))
-                isFirebirdNotStarted = loginrslt == LoginResult.FirebirdNotStarted;
-            else
-                isFirebirdNotStarted = Convert.ToBoolean(firebirdNotStarted);
-            if (String.IsNullOrEmpty(dbNotFound))
-                isDBNotFound = loginrslt == LoginResult.DatabaseNotFound;
-            else
-                isDBNotFound = Convert.ToBoolean(dbNotFound);
-            if (String.IsNullOrEmpty(loginDataIncorrect))
-                isLoginDataIncorrect = loginrslt == LoginResult.LoginDataIncorrect;
-            else
-                isLoginDataIncorrect = Convert.ToBoolean(loginDataIncorrect);
-
-            if (loginrslt == LoginResult.ConnectionStringArgumentError || loginrslt == LoginResult.Error)
+            if(loginrslt == LoginResult.Error || loginrslt == LoginResult.ConnectionStringArgumentError)
             {
-                isFirebirdNotStarted = isDBNotFound = isLoginDataIncorrect = true;
+                picFirebirdStarted.Image = Properties.Resources.Error_16x16;
+                lblFirebirdStarted.Text = Properties.Resources.txtFirebirdNotStarted;
+                picDbFound.Image = Properties.Resources.Error_16x16;
+                lblDbFound.Text = Properties.Resources.txtDbNotFound;
+                picLoginSuccessfull.Image = Properties.Resources.Error_16x16;
+                lblLoginSuccessfull.Text = Properties.Resources.txtLoginNotSuccessfull;
             }
 
-            if (isFirebirdNotStarted)
+            if (loginrslt == LoginResult.FirebirdNotStarted)
             {
                 picFirebirdStarted.Image = Properties.Resources.Error_16x16;
                 lblFirebirdStarted.Text = Properties.Resources.txtFirebirdNotStarted;
@@ -73,7 +62,7 @@ namespace RivDic.Dialogs
                 lblFirebirdStarted.Text = Properties.Resources.txtFirebirdStarted;
             }
 
-            if (isDBNotFound)
+            if (loginrslt == LoginResult.DatabaseNotFound)
             {
                 picDbFound.Image = Properties.Resources.Error_16x16;
                 lblDbFound.Text = Properties.Resources.txtDbNotFound;
@@ -84,7 +73,7 @@ namespace RivDic.Dialogs
                 lblDbFound.Text = Properties.Resources.txtDbFound;
             }
 
-            if (isLoginDataIncorrect)
+            if (loginrslt == LoginResult.LoginDataIncorrect)
             {
                 picLoginSuccessfull.Image = Properties.Resources.Error_16x16;
                 lblLoginSuccessfull.Text = Properties.Resources.txtLoginNotSuccessfull;
@@ -136,7 +125,7 @@ namespace RivDic.Dialogs
             loginrslt = Database.DatabaseLogin();
             if (loginrslt == LoginResult.Successfull)
                 return DialogResult.OK;
-            CheckRequirements(null, null, null);
+            CheckRequirements();
             return ShowDialog();
         }
 
@@ -146,7 +135,7 @@ namespace RivDic.Dialogs
             if (loginrslt.Equals(LoginResult.Successfull))
                 DialogResult = DialogResult.OK;
             else
-                CheckRequirements(null, null, null);
+                CheckRequirements();
         }
 
 

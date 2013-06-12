@@ -59,6 +59,7 @@
             this.smnuNewRiver,
             this.smnuNewRoute,
             this.smnuNewStartEnd});
+            this.mnuNew.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mnuNew.Name = "mnuNew";
             this.mnuNew.Size = new System.Drawing.Size(41, 20);
             this.mnuNew.Text = "Neu";
@@ -133,8 +134,10 @@
             this.Controls.Add(this.btnSearchRoute);
             this.Controls.Add(this.btnSearchRiver);
             this.Controls.Add(this.mnuBar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mnuBar;
+            this.MaximizeBox = false;
             this.Name = "MainGUI";
             this.Text = "RivDic";
             this.mnuBar.ResumeLayout(false);

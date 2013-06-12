@@ -40,7 +40,7 @@
             // 
             this.btnAbort.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAbort.DialogResult = System.Windows.Forms.DialogResult.Abort;
-            this.btnAbort.Location = new System.Drawing.Point(155, 3);
+            this.btnAbort.Location = new System.Drawing.Point(165, 3);
             this.btnAbort.Name = "btnAbort";
             this.btnAbort.Size = new System.Drawing.Size(75, 23);
             this.btnAbort.TabIndex = 6;
@@ -51,11 +51,11 @@
             // 
             this.btnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnOk.Location = new System.Drawing.Point(74, 3);
+            this.btnOk.Location = new System.Drawing.Point(84, 3);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 5;
-            this.btnOk.Text = "Ok";
+            this.btnOk.Text = "OK";
             this.btnOk.UseVisualStyleBackColor = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
@@ -66,10 +66,10 @@
             this.pnlButtons.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.pnlButtons.Controls.Add(this.btnAbort);
             this.pnlButtons.Controls.Add(this.btnOk);
-            this.pnlButtons.Location = new System.Drawing.Point(9, 221);
+            this.pnlButtons.Location = new System.Drawing.Point(9, 220);
             this.pnlButtons.Margin = new System.Windows.Forms.Padding(0);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(233, 30);
+            this.pnlButtons.Size = new System.Drawing.Size(243, 30);
             this.pnlButtons.TabIndex = 2;
             // 
             // fieldsControll
@@ -82,14 +82,18 @@
             // 
             // NewDialog
             // 
+            this.AcceptButton = this.btnOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.ClientSize = new System.Drawing.Size(251, 260);
+            this.CancelButton = this.btnAbort;
+            this.ClientSize = new System.Drawing.Size(261, 259);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.pnlButtons);
             this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "NewDialog";
             this.ShowInTaskbar = false;
             this.Text = "NewDialog";

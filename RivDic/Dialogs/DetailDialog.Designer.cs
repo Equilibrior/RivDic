@@ -49,7 +49,7 @@
             this.gridView.Location = new System.Drawing.Point(12, 310);
             this.gridView.MultiSelect = false;
             this.gridView.Name = "gridView";
-            this.gridView.Size = new System.Drawing.Size(560, 169);
+            this.gridView.Size = new System.Drawing.Size(570, 169);
             this.gridView.TabIndex = 0;
             this.gridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.gridView_CellContentClick);
             // 
@@ -63,12 +63,13 @@
             this.mnuCalculateRoute});
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(584, 24);
+            this.menuStrip.Size = new System.Drawing.Size(594, 24);
             this.menuStrip.TabIndex = 2;
             this.menuStrip.Text = "menuStrip1";
             // 
             // mnuSave
             // 
+            this.mnuSave.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mnuSave.Name = "mnuSave";
             this.mnuSave.Size = new System.Drawing.Size(71, 20);
             this.mnuSave.Text = "Speichern";
@@ -76,6 +77,7 @@
             // 
             // mnuEdit
             // 
+            this.mnuEdit.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mnuEdit.Name = "mnuEdit";
             this.mnuEdit.Size = new System.Drawing.Size(75, 20);
             this.mnuEdit.Text = "Bearbeiten";
@@ -83,6 +85,7 @@
             // 
             // mnuDelete
             // 
+            this.mnuDelete.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mnuDelete.Name = "mnuDelete";
             this.mnuDelete.Size = new System.Drawing.Size(63, 20);
             this.mnuDelete.Text = "Löschen";
@@ -90,6 +93,7 @@
             // 
             // mnuCalculateRoute
             // 
+            this.mnuCalculateRoute.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.mnuCalculateRoute.Name = "mnuCalculateRoute";
             this.mnuCalculateRoute.Size = new System.Drawing.Size(89, 20);
             this.mnuCalculateRoute.Text = "Route planen";
@@ -118,13 +122,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
-            this.ClientSize = new System.Drawing.Size(584, 491);
+            this.ClientSize = new System.Drawing.Size(594, 491);
             this.Controls.Add(this.filterControl);
             this.Controls.Add(this.fieldsControll);
             this.Controls.Add(this.gridView);
             this.Controls.Add(this.menuStrip);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
+            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 38);
             this.Name = "DetailDialog";
             this.ShowInTaskbar = false;

@@ -347,7 +347,9 @@ namespace RivDic
             sb.Append("SELECT COUNT(*) FROM " + tableName);
             sb.Append(" WHERE " + Fld.Id + "='" + id + "'");
             DataTable dt = ExecuteQuery(sb.ToString());
-            return dt.Rows.Count <= 1;
+            if (dt.Rows[0].ItemArray[0].Equals(0))
+                return false;
+            return true;
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------

@@ -272,7 +272,8 @@ namespace RivDic
             {
                 fbConnection = new FbConnection(sb.ToString());
                 fbConnection.Open();
-                FillCountryTable();
+                if (IsReorgNeeded())
+                    ReorgDatabase();
                 return LoginResult.Successfull;
             }
             catch (Exception ex)
@@ -308,7 +309,7 @@ namespace RivDic
             StringBuilder sb = new StringBuilder();
             sb.Append("SELECT * FROM ");
             sb.Append(tableName.ToUpper());
-            DataTable dt = ExecuteQuery(sb.ToString());            
+            DataTable dt = ExecuteQuery(sb.ToString());
             return dt;
         }
 
@@ -533,7 +534,7 @@ namespace RivDic
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
-        /// <summary>
+        /// summary>
         /// Schreibt die übergebenen Werte in die Settings
         /// </summary>
         /// <param name="section">Section unter der der Wert gespeichert werden soll, Einzigartig</param>
@@ -566,6 +567,36 @@ namespace RivDic
                 return Properties.Settings.Default.DatabasePath;
 
             return string.Empty;
+        }
+
+        private static bool IsReorgNeeded()
+        {
+            string sql = "SELECT * FROM RDB$RELATIONS";
+            DataTable dt = ExecuteQuery(sql);
+            bool tableFluesseExist = false;
+            bool tableFlussAbschnittExist = false;
+            bool tableLaenderExist = false;
+            bool tableStartEndeExist = false;
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row[8].ToString().Equals(Tbl.Fluesse))
+                    tableFluesseExist = true;
+                if (row[8].ToString().Equals(Tbl.FlussAbschnitt))
+                    tableFlussAbschnittExist = true;
+                if (row[8].ToString().Equals(Tbl.Laender))
+                    tableLaenderExist = true;
+                if (row[8].ToString().Equals(Tbl.StartEnde))
+                    tableStartEndeExist = true;
+            }
+            if (tableFluesseExist && tableFlussAbschnittExist && tableLaenderExist && tableStartEndeExist)
+                return false;
+            else
+                return true;
+        }
+
+        private static void ReorgDatabase()
+        { 
+            
         }
 
         private static void FillCountryTable()

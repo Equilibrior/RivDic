@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.ServiceProcess;
 using System.Configuration;
 using System.Diagnostics;
+using RivDic.Properties;
 
 namespace RivDic.Dialogs
 {
@@ -41,47 +42,48 @@ namespace RivDic.Dialogs
 
         private void CheckRequirements()
         {
-            if(loginrslt == LoginResult.Error || loginrslt == LoginResult.ConnectionStringArgumentError)
+            switch (loginrslt)
             {
-                picFirebirdStarted.Image = Properties.Resources.Error_16x16;
-                lblFirebirdStarted.Text = Properties.Resources.txtFirebirdNotStarted;
-                picDbFound.Image = Properties.Resources.Error_16x16;
-                lblDbFound.Text = Properties.Resources.txtDbNotFound;
-                picLoginSuccessfull.Image = Properties.Resources.Error_16x16;
-                lblLoginSuccessfull.Text = Properties.Resources.txtLoginNotSuccessfull;
-            }
-
-            if (loginrslt == LoginResult.FirebirdNotStarted)
-            {
-                picFirebirdStarted.Image = Properties.Resources.Error_16x16;
-                lblFirebirdStarted.Text = Properties.Resources.txtFirebirdNotStarted;
-            }
-            else
-            {
-                picFirebirdStarted.Image = Properties.Resources.Clean_16x16;
-                lblFirebirdStarted.Text = Properties.Resources.txtFirebirdStarted;
-            }
-
-            if (loginrslt == LoginResult.DatabaseNotFound)
-            {
-                picDbFound.Image = Properties.Resources.Error_16x16;
-                lblDbFound.Text = Properties.Resources.txtDbNotFound;
-            }
-            else
-            {
-                picDbFound.Image = Properties.Resources.Clean_16x16;
-                lblDbFound.Text = Properties.Resources.txtDbFound;
-            }
-
-            if (loginrslt == LoginResult.LoginDataIncorrect)
-            {
-                picLoginSuccessfull.Image = Properties.Resources.Error_16x16;
-                lblLoginSuccessfull.Text = Properties.Resources.txtLoginNotSuccessfull;
-            }
-            else
-            {
-                picLoginSuccessfull.Image = Properties.Resources.Clean_16x16;
-                lblLoginSuccessfull.Text = Properties.Resources.txtLoginSuccessfull;
+                case LoginResult.FirebirdNotStarted:
+                    {
+                        picFirebirdStarted.Image = Resources.Error_16x16;
+                        lblFirebirdStarted.Text = Resources.txtFirebirdNotStarted;
+                        break;
+                    }
+                case LoginResult.DatabaseNotFound:
+                    {
+                        picDbFound.Image = Resources.Error_16x16;
+                        lblDbFound.Text = Resources.txtDbNotFound;
+                        break;
+                    }
+                case LoginResult.LoginDataIncorrect:
+                    {
+                        picLoginSuccessfull.Image = Resources.Error_16x16;
+                        lblLoginSuccessfull.Text = Resources.txtLoginNotSuccessfull;
+                        break;
+                    }
+                case LoginResult.Successfull:
+                    {
+                        picFirebirdStarted.Image = Resources.Clean_16x16;
+                        lblFirebirdStarted.Text = Resources.txtFirebirdStarted;
+                        picDbFound.Image = Resources.Clean_16x16;
+                        lblDbFound.Text = Resources.txtDbFound;
+                        picLoginSuccessfull.Image = Resources.Clean_16x16;
+                        lblLoginSuccessfull.Text = Resources.txtLoginSuccessfull;
+                        break;
+                    }
+                case LoginResult.ConnectionStringArgumentError:
+                case LoginResult.Error:
+                default:
+                    {
+                        picFirebirdStarted.Image = Resources.Clean_16x16;
+                        lblFirebirdStarted.Text = Resources.txtFirebirdStarted;
+                        picDbFound.Image = Resources.Error_16x16;
+                        lblDbFound.Text = Resources.txtDbNotFound;
+                        picLoginSuccessfull.Image = Resources.Error_16x16;
+                        lblLoginSuccessfull.Text = Resources.txtLoginNotSuccessfull;
+                        break;
+                    }
             }
         }
 

@@ -333,6 +333,83 @@ namespace RivDic
             return true;
         }
 
+        private static void ReorgDatabase()
+        {
+            CreateTables();
+            FillCountryTable();
+        }
+
+        private static void CreateTables()
+        {
+            StringBuilder tableFluesseSql = new StringBuilder("CREATE TABLE \""+ Tbl.Fluesse + "\"");
+            tableFluesseSql.AppendLine("(");
+            tableFluesseSql.AppendLine("\"" +Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            tableFluesseSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3) NOT NULL,");
+            tableFluesseSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            tableFluesseSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+            tableFluesseSql.AppendLine("\"" + Fld.Ticket + "\" CHAR(1) NOT NULL,");
+            tableFluesseSql.AppendLine("\"" + Fld.Ticketpreis + "\" DECIMAL(2,2),");
+            tableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            tableFluesseSql.AppendLine("CONSTRAINT \"PK_FLUESSE\" PRIMARY KEY (\""+ Fld.Id + "\")");
+            tableFluesseSql.AppendLine(");");
+
+
+            StringBuilder tableFlussAbschnittSql = new StringBuilder("CREATE TABLE \""+ Tbl.FlussAbschnitt + "\"");
+            tableFlussAbschnittSql.AppendLine("(");
+            tableFlussAbschnittSql.AppendLine("\"" +Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.FlussId + "\" VARCHAR(255) NOT NULL,");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3),");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" VARCHAR(255),");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
+            tableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            tableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_FLUSSABSCHNITT\" PRIMARY KEY (\""+ Fld.Id + "\")");
+            tableFlussAbschnittSql.AppendLine(");");
+
+ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+
+ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+
+ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+
+
+            CREATE TABLE "LAENDER"
+
+(
+
+ "ID"     String 255  NOT NULL,
+
+ "NAME"     String 255  NOT NULL,
+
+CONSTRAINT "PK_LAENDER" PRIMARY KEY ("ID")
+
+);
+
+            CREATE TABLE "STARTENDE"
+
+(
+
+ "ID"     String 255  NOT NULL,
+
+ "NAME"     String 255  NOT NULL,
+
+ "LAND"     String 255 ,
+
+ "KOORDINATEN"     String 255  NOT NULL,
+
+ "EINSTIEG"     Boolean ,
+
+ "AUSSTIEG"     Boolean ,
+
+ "DATAEND"     TIMESTAMP,
+
+CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
+
+);
+
+        }
+
         #region Hilfsmethoden
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -592,11 +669,6 @@ namespace RivDic
                 return false;
             else
                 return true;
-        }
-
-        private static void ReorgDatabase()
-        { 
-            
         }
 
         private static void FillCountryTable()

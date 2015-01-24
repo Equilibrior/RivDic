@@ -333,80 +333,124 @@ namespace RivDic
             return true;
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Reoganisiert die Datenbank
+        /// </summary>
         private static void ReorgDatabase()
         {
             CreateTables();
             FillCountryTable();
         }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Erzeugt die Tabellen mit Feldern und Primär und Fremdschlüsseln
+        /// </summary>
         private static void CreateTables()
         {
-            StringBuilder tableFluesseSql = new StringBuilder("CREATE TABLE \""+ Tbl.Fluesse + "\"");
-            tableFluesseSql.AppendLine("(");
-            tableFluesseSql.AppendLine("\"" +Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            tableFluesseSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3) NOT NULL,");
-            tableFluesseSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            tableFluesseSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
-            tableFluesseSql.AppendLine("\"" + Fld.Ticket + "\" CHAR(1) NOT NULL,");
-            tableFluesseSql.AppendLine("\"" + Fld.Ticketpreis + "\" DECIMAL(2,2),");
-            tableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            tableFluesseSql.AppendLine("CONSTRAINT \"PK_FLUESSE\" PRIMARY KEY (\""+ Fld.Id + "\")");
-            tableFluesseSql.AppendLine(");");
+            //CREATE TABLE FLUESSE
+            //(
+            //"ID" VARCHAR(255) NOT NULL,
+            //"WWLEVEL" VARCHAR(255) NOT NULL,
+            //"NAME" VARCHAR(255) NOT NULL,
+            //"TICKET" Boolean NOT NULL,
+            //"TICKETPREIS" DECIMAL(2,2),
+            //"DATAEND" TIMESTAMP,
+            //CONSTRAINT "PK_FLUESSE" PRIMARY KEY ("ID")
+            //)
+            StringBuilder createTableFluesseSql = new StringBuilder("CREATE TABLE \"" + Tbl.Fluesse + "\"");
+            createTableFluesseSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3) NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.Ticket + "\" CHAR(1) NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.Ticketpreis + "\" DECIMAL(2,2),");
+            createTableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            createTableFluesseSql.AppendLine("CONSTRAINT \"PK_FLUESSE\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            ExecuteQuery(createTableFluesseSql.ToString());
 
+            //CREATE TABLE FLUSSABSCHNITT
+            //(
+            //"ID" VARCHAR(255) NOT NULL,
+            //"FLUSSID" VARCHAR(255) NOT NULL,
+            //"NAME" VARCHAR(255) NOT NULL,
+            //"WWLEVEL" VARCHAR(3),
+            //"EINSETZPUNKT" VARCHAR(255),
+            //"AUSSETZPUNKT" VARCHAR(255),
+            //"KOMMENTAR" VARCHAR(255),
+            //"DATAEND" TIMESTAMP,
+            //CONSTRAINT "PK_FLUSSABSCHNITT" PRIMARY KEY ("ID")
+            //),
+            StringBuilder createTableFlussAbschnittSql = new StringBuilder("CREATE TABLE \"" + Tbl.FlussAbschnitt + "\"");
+            createTableFlussAbschnittSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.FlussId + "\" VARCHAR(255) NOT NULL,");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3),");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" VARCHAR(255),");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
+            createTableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            createTableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_FLUSSABSCHNITT\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            ExecuteQuery(createTableFlussAbschnittSql.ToString());
 
-            StringBuilder tableFlussAbschnittSql = new StringBuilder("CREATE TABLE \""+ Tbl.FlussAbschnitt + "\"");
-            tableFlussAbschnittSql.AppendLine("(");
-            tableFlussAbschnittSql.AppendLine("\"" +Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.FlussId + "\" VARCHAR(255) NOT NULL,");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3),");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" VARCHAR(255),");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
-            tableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            tableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_FLUSSABSCHNITT\" PRIMARY KEY (\""+ Fld.Id + "\")");
-            tableFlussAbschnittSql.AppendLine(");");
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK1TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
+            addFK1TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
+            addFK1TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.Einsetzpunkt + " \")");
+            addFK1TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.StartEnde + "\" (\" " + Fld.Id + "\")");
+            addFK1TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK1TableFlussAbschnittSql.ToString());
 
-//ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK2TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
+            addFK2TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
+            addFK2TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.Aussetzpunkt + " \")");
+            addFK2TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.StartEnde + "\" (\" " + Fld.Id + "\")");
+            addFK2TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK2TableFlussAbschnittSql.ToString());
 
-//ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK3TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
+            addFK3TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
+            addFK3TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.FlussId + " \")");
+            addFK3TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.Fluesse + "\" (\" " + Fld.Id + "\")");
+            addFK3TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK3TableFlussAbschnittSql.ToString());
 
-//ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            //            CREATE TABLE "LAENDER"
+            //(
+            // "ID"     String 255  NOT NULL,
+            // "NAME"     String 255  NOT NULL,
+            //CONSTRAINT "PK_LAENDER" PRIMARY KEY ("ID")
+            //);
+            StringBuilder createTableLaenderSql = new StringBuilder("CREATE TABLE \"" + Tbl.Laender + "\"");
+            createTableLaenderSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.Laender + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            ExecuteQuery(createTableLaenderSql.ToString());
 
-
-//            CREATE TABLE "LAENDER"
-
-//(
-
-// "ID"     String 255  NOT NULL,
-
-// "NAME"     String 255  NOT NULL,
-
-//CONSTRAINT "PK_LAENDER" PRIMARY KEY ("ID")
-
-//);
-
-//            CREATE TABLE "STARTENDE"
-
-//(
-
-// "ID"     String 255  NOT NULL,
-
-// "NAME"     String 255  NOT NULL,
-
-// "LAND"     String 255 ,
-
-// "KOORDINATEN"     String 255  NOT NULL,
-
-// "EINSTIEG"     Boolean ,
-
-// "AUSSTIEG"     Boolean ,
-
-// "DATAEND"     TIMESTAMP,
-
-//CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
-
-//);
+            //            CREATE TABLE "STARTENDE"
+            //(
+            // "ID"     String 255  NOT NULL,
+            // "NAME"     String 255  NOT NULL,
+            // "LAND"     String 255 ,
+            // "KOORDINATEN"     String 255  NOT NULL,
+            // "EINSTIEG"     Boolean ,
+            // "AUSSTIEG"     Boolean ,
+            // "DATAEND"     TIMESTAMP,
+            //CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
+            //);
+            StringBuilder createTableStartEndeSql = new StringBuilder("CREATE TABLE \"" + Tbl.StartEnde + "\"");
+            createTableLaenderSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Koordinaten + "\" VARCHAR(255) NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" CHAR(1) NOT NULL,");
+            createTableLaenderSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" CHAR(1) NOT NULL,");
+            createTableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.StartEnde + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            ExecuteQuery(createTableStartEndeSql.ToString());
 
         }
 

@@ -655,7 +655,7 @@ namespace RivDic
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
-        /// summary>
+        /// <summary>
         /// Schreibt die übergebenen Werte in die Settings
         /// </summary>
         /// <param name="section">Section unter der der Wert gespeichert werden soll, Einzigartig</param>

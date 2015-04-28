@@ -27,6 +27,7 @@ namespace RivDic.Dialogs
         public StartExceptionDialog()
         {
             InitializeComponent();
+            Initialize();
             CheckRequirements();
         }
 
@@ -40,6 +41,24 @@ namespace RivDic.Dialogs
 
         #region Methoden
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Initialisiert den Dialog.
+        /// </summary>
+        private void Initialize()
+        {
+            picFirebirdStarted.Image = Resources.Error_16x16;
+            lblFirebirdStarted.Text = Resources.txtFirebirdNotStarted;
+            picDbFound.Image = Resources.Error_16x16;
+            lblDbFound.Text = Resources.txtDbNotFound;
+            picLoginSuccessfull.Image = Resources.Error_16x16;
+            lblLoginSuccessfull.Text = Resources.txtLoginNotSuccessfull;
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Prüft die Anforderungen für ein Login in die Datenbank
+        /// </summary>
         private void CheckRequirements()
         {
             switch (loginrslt)

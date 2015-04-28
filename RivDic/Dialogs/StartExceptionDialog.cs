@@ -52,12 +52,18 @@ namespace RivDic.Dialogs
                     }
                 case LoginResult.DatabaseNotFound:
                     {
+                        picFirebirdStarted.Image = Resources.Clean_16x16;
+                        lblFirebirdStarted.Text = Resources.txtFirebirdStarted;
                         picDbFound.Image = Resources.Error_16x16;
                         lblDbFound.Text = Resources.txtDbNotFound;
                         break;
                     }
                 case LoginResult.LoginDataIncorrect:
                     {
+                        picFirebirdStarted.Image = Resources.Clean_16x16;
+                        lblFirebirdStarted.Text = Resources.txtFirebirdStarted;
+                        picDbFound.Image = Resources.Clean_16x16;
+                        lblDbFound.Text = Resources.txtDbFound;
                         picLoginSuccessfull.Image = Resources.Error_16x16;
                         lblLoginSuccessfull.Text = Resources.txtLoginNotSuccessfull;
                         break;

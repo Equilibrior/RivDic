@@ -23,6 +23,8 @@ namespace RivDic
         /// </summary>
         private static FbConnection fbConnection { get; set; }
 
+        private static List<KeyValuePair<String, String>> tablesExisting;
+
         private static List<string> countryList;
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -272,8 +274,7 @@ namespace RivDic
             {
                 fbConnection = new FbConnection(sb.ToString());
                 fbConnection.Open();
-                if (IsReorgNeeded())
-                    ReorgDatabase();
+                ReorgDatabase();
                 return LoginResult.Successfull;
             }
             catch (Exception ex)
@@ -335,40 +336,68 @@ namespace RivDic
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
+        /// Prüft ob ein Reorg der Datenbank nötig ist.
+        /// </summary>
+        /// <returns></returns>
+        private static void CheckReorgNeed()
+        {
+            string sql = "SELECT * FROM RDB$RELATIONS";
+            DataTable dt = ExecuteQuery(sql);
+            tablesExisting = new List<KeyValuePair<String, String>>();
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row[8].ToString().Trim().Equals(Tbl.Fluesse))
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Fluesse, Boolean.TrueString));
+                if (row[8].ToString().Trim().Equals(Tbl.FlussAbschnitt))
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.FlussAbschnitt, Boolean.TrueString));
+                if (row[8].ToString().Trim().Equals(Tbl.Laender))
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Laender, Boolean.TrueString));
+                if (row[8].ToString().Trim().Equals(Tbl.StartEnde))
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.StartEnde, Boolean.TrueString));
+            }
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
         /// Reoganisiert die Datenbank
         /// </summary>
         private static void ReorgDatabase()
         {
+            CheckReorgNeed();
             CreateTables();
+            AlterTables();
             FillCountryTable();
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
         /// <summary>
-        /// Erzeugt die Tabellen mit Feldern und Primär und Fremdschlüsseln
+        /// Erzeugt die Tabellen mit Feldern und Primär
         /// </summary>
         private static void CreateTables()
         {
-            //CREATE TABLE FLUESSE
-            //(
-            //"ID" VARCHAR(255) NOT NULL,
-            //"WWLEVEL" VARCHAR(255) NOT NULL,
-            //"NAME" VARCHAR(255) NOT NULL,
-            //"TICKET" Boolean NOT NULL,
-            //"TICKETPREIS" DECIMAL(2,2),
-            //"DATAEND" TIMESTAMP,
-            //CONSTRAINT "PK_FLUESSE" PRIMARY KEY ("ID")
-            //)
-            StringBuilder createTableFluesseSql = new StringBuilder("CREATE TABLE \"" + Tbl.Fluesse + "\"");
-            createTableFluesseSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3) NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.Ticket + "\" CHAR(1) NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.Ticketpreis + "\" DECIMAL(2,2),");
-            createTableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            createTableFluesseSql.AppendLine("CONSTRAINT \"PK_FLUESSE\" PRIMARY KEY (\"" + Fld.Id + "\"));");
-            ExecuteQuery(createTableFluesseSql.ToString());
+            if (tablesExisting[Tbl.Fluesse].Value == Boolean.TrueString)
+            {
+                //CREATE TABLE FLUESSE
+                //(
+                //"ID" VARCHAR(255) NOT NULL,
+                //"WWLEVEL" VARCHAR(255) NOT NULL,
+                //"NAME" VARCHAR(255) NOT NULL,
+                //"TICKET" Boolean NOT NULL,
+                //"TICKETPREIS" DECIMAL(2,2),
+                //"DATAEND" TIMESTAMP,
+                //CONSTRAINT "PK_FLUESSE" PRIMARY KEY ("ID")
+                //)
+                StringBuilder createTableFluesseSql = new StringBuilder("CREATE TABLE \"" + Tbl.Fluesse + "\"");
+                createTableFluesseSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+                createTableFluesseSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3) NOT NULL,");
+                createTableFluesseSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+                createTableFluesseSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+                createTableFluesseSql.AppendLine("\"" + Fld.Ticket + "\" CHAR(1) NOT NULL,");
+                createTableFluesseSql.AppendLine("\"" + Fld.Ticketpreis + "\" DECIMAL(2,2),");
+                createTableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+                createTableFluesseSql.AppendLine("CONSTRAINT \"PK_" + Tbl.Fluesse + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+                ExecuteQuery(createTableFluesseSql.ToString());
+            }
 
             //CREATE TABLE FLUSSABSCHNITT
             //(
@@ -391,34 +420,10 @@ namespace RivDic
             createTableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
             createTableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
             createTableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            createTableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_FLUSSABSCHNITT\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            createTableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_ " + Tbl.FlussAbschnitt + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
             ExecuteQuery(createTableFlussAbschnittSql.ToString());
 
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK1TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
-            addFK1TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
-            addFK1TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.Einsetzpunkt + " \")");
-            addFK1TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.StartEnde + "\" (\" " + Fld.Id + "\")");
-            addFK1TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK1TableFlussAbschnittSql.ToString());
-
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK2TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
-            addFK2TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
-            addFK2TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.Aussetzpunkt + " \")");
-            addFK2TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.StartEnde + "\" (\" " + Fld.Id + "\")");
-            addFK2TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK2TableFlussAbschnittSql.ToString());
-
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK3TableFlussAbschnittSql = new StringBuilder("ALTER TABLE \"" + Tbl.FlussAbschnitt + "\"");
-            addFK3TableFlussAbschnittSql.Append("ADD CONSTRAINT \"FK_" + Tbl.FlussAbschnitt + "_1\"");
-            addFK3TableFlussAbschnittSql.Append("FOREIGN KEY (\"" + Fld.FlussId + " \")");
-            addFK3TableFlussAbschnittSql.Append("REFERENCES \"" + Tbl.Fluesse + "\" (\" " + Fld.Id + "\")");
-            addFK3TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK3TableFlussAbschnittSql.ToString());
-
-            //            CREATE TABLE "LAENDER"
+            //CREATE TABLE "LAENDER"
             //(
             // "ID"     String 255  NOT NULL,
             // "NAME"     String 255  NOT NULL,
@@ -430,7 +435,7 @@ namespace RivDic
             createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.Laender + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
             ExecuteQuery(createTableLaenderSql.ToString());
 
-            //            CREATE TABLE "STARTENDE"
+            //CREATE TABLE "STARTENDE"
             //(
             // "ID"     String 255  NOT NULL,
             // "NAME"     String 255  NOT NULL,
@@ -442,16 +447,75 @@ namespace RivDic
             //CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
             //);
             StringBuilder createTableStartEndeSql = new StringBuilder("CREATE TABLE \"" + Tbl.StartEnde + "\"");
-            createTableLaenderSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Koordinaten + "\" VARCHAR(255) NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" CHAR(1) NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" CHAR(1) NOT NULL,");
-            createTableFluesseSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.StartEnde + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+            createTableStartEndeSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.Koordinaten + "\" VARCHAR(255) NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" CHAR(1) NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" CHAR(1) NOT NULL,");
+            createTableStartEndeSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+            createTableStartEndeSql.AppendLine("CONSTRAINT \"PK_" + Tbl.StartEnde + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
             ExecuteQuery(createTableStartEndeSql.ToString());
+        }
 
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Ergänzt die Fremdschlüssel
+        /// </summary>
+        private static void AlterTables()
+        {
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK1TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+            addFK1TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_1 ");
+            addFK1TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Einsetzpunkt + " ) ");
+            addFK1TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
+            addFK1TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK1TableFlussAbschnittSql.ToString());
+
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK2TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+            addFK2TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_2 ");
+            addFK2TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Aussetzpunkt + " ) ");
+            addFK2TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
+            addFK2TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK2TableFlussAbschnittSql.ToString());
+
+            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+            StringBuilder addFK3TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+            addFK3TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_3 ");
+            addFK3TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.FlussId + " ) ");
+            addFK3TableFlussAbschnittSql.Append("REFERENCES " + Tbl.Fluesse + " ( " + Fld.Id + ") ");
+            addFK3TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+            ExecuteQuery(addFK3TableFlussAbschnittSql.ToString());
+        }
+
+        /// ------------------------------------------------------------------------------------------------------------------------
+        /// <summary>
+        /// Füllt die Tabelle LAENDER mit Daten
+        /// </summary>
+        private static void FillCountryTable()
+        {
+
+            DataTable dt = ExecuteQuery("SELECT COUNT(*) FROM " + Tbl.Laender);
+            if (Convert.ToInt64(dt.Rows[0].ItemArray[0]) > 0)
+            {
+                //Tabelle hat Inhalte keine Änderung Notwendig
+            }
+            else
+            {
+                StringBuilder sb = new StringBuilder();
+                //sb.Append(Tbl.Laender);
+                //sb.Append(" VALUES ");
+                sb.AppendLine("EXECUTE BLOCK AS BEGIN");
+                foreach (String country in CountryList)
+                {
+                    sb.Append("INSERT INTO " + Tbl.Laender);
+                    sb.Append(" VALUES ('" + Guid.NewGuid() + "', '");
+                    sb.AppendLine(country + "');");
+                }
+                sb.AppendLine("END");
+                ExecuteQuery(sb.ToString());
+            }
         }
 
         #region Hilfsmethoden
@@ -688,56 +752,6 @@ namespace RivDic
                 return Properties.Settings.Default.DatabasePath;
 
             return string.Empty;
-        }
-
-        private static bool IsReorgNeeded()
-        {
-            string sql = "SELECT * FROM RDB$RELATIONS";
-            DataTable dt = ExecuteQuery(sql);
-            bool tableFluesseExist = false;
-            bool tableFlussAbschnittExist = false;
-            bool tableLaenderExist = false;
-            bool tableStartEndeExist = false;
-            foreach (DataRow row in dt.Rows)
-            {
-                if (row[8].ToString().Equals(Tbl.Fluesse))
-                    tableFluesseExist = true;
-                if (row[8].ToString().Equals(Tbl.FlussAbschnitt))
-                    tableFlussAbschnittExist = true;
-                if (row[8].ToString().Equals(Tbl.Laender))
-                    tableLaenderExist = true;
-                if (row[8].ToString().Equals(Tbl.StartEnde))
-                    tableStartEndeExist = true;
-            }
-            if (tableFluesseExist && tableFlussAbschnittExist && tableLaenderExist && tableStartEndeExist)
-                return false;
-            else
-                return true;
-        }
-
-        private static void FillCountryTable()
-        {
-
-            DataTable dt = ExecuteQuery("SELECT COUNT(*) FROM " + Tbl.Laender);
-            if (Convert.ToInt64(dt.Rows[0].ItemArray[0]) > 0)
-            {
-                //Tabelle hat Inhalte keine Änderung Notwendig
-            }
-            else
-            {
-                StringBuilder sb = new StringBuilder();
-                //sb.Append(Tbl.Laender);
-                //sb.Append(" VALUES ");
-                sb.AppendLine("EXECUTE BLOCK AS BEGIN");
-                foreach (String country in CountryList)
-                {
-                    sb.Append("INSERT INTO " + Tbl.Laender);
-                    sb.Append(" VALUES ('" + Guid.NewGuid() + "', '");
-                    sb.AppendLine(country + "');");
-                }
-                sb.AppendLine("END");
-                ExecuteQuery(sb.ToString());
-            }
         }
 
         #endregion Hilfsmethoden

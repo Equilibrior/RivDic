@@ -348,13 +348,26 @@ namespace RivDic
             {
                 if (row[8].ToString().Trim().Equals(Tbl.Fluesse))
                     tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Fluesse, Boolean.TrueString));
+                else
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Fluesse, Boolean.FalseString));
+
                 if (row[8].ToString().Trim().Equals(Tbl.FlussAbschnitt))
                     tablesExisting.Add(new KeyValuePair<String, String>(Tbl.FlussAbschnitt, Boolean.TrueString));
+                else
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.FlussAbschnitt, Boolean.FalseString));
+
                 if (row[8].ToString().Trim().Equals(Tbl.Laender))
                     tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Laender, Boolean.TrueString));
+                else
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Laender, Boolean.FalseString));
+
                 if (row[8].ToString().Trim().Equals(Tbl.StartEnde))
                     tablesExisting.Add(new KeyValuePair<String, String>(Tbl.StartEnde, Boolean.TrueString));
+                else
+                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.StartEnde, Boolean.FalseString));
             }
+
+
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -375,7 +388,7 @@ namespace RivDic
         /// </summary>
         private static void CreateTables()
         {
-            if (tablesExisting[Tbl.Fluesse].Value == Boolean.TrueString)
+            if (tablesExisting[0].Value == Boolean.FalseString)
             {
                 //CREATE TABLE FLUESSE
                 //(
@@ -399,63 +412,72 @@ namespace RivDic
                 ExecuteQuery(createTableFluesseSql.ToString());
             }
 
-            //CREATE TABLE FLUSSABSCHNITT
-            //(
-            //"ID" VARCHAR(255) NOT NULL,
-            //"FLUSSID" VARCHAR(255) NOT NULL,
-            //"NAME" VARCHAR(255) NOT NULL,
-            //"WWLEVEL" VARCHAR(3),
-            //"EINSETZPUNKT" VARCHAR(255),
-            //"AUSSETZPUNKT" VARCHAR(255),
-            //"KOMMENTAR" VARCHAR(255),
-            //"DATAEND" TIMESTAMP,
-            //CONSTRAINT "PK_FLUSSABSCHNITT" PRIMARY KEY ("ID")
-            //),
-            StringBuilder createTableFlussAbschnittSql = new StringBuilder("CREATE TABLE \"" + Tbl.FlussAbschnitt + "\"");
-            createTableFlussAbschnittSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.FlussId + "\" VARCHAR(255) NOT NULL,");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3),");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" VARCHAR(255),");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
-            createTableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            createTableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_ " + Tbl.FlussAbschnitt + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
-            ExecuteQuery(createTableFlussAbschnittSql.ToString());
+            if (tablesExisting[1].Value == Boolean.FalseString)
+            {
+                //CREATE TABLE FLUSSABSCHNITT
+                //(
+                //"ID" VARCHAR(255) NOT NULL,
+                //"FLUSSID" VARCHAR(255) NOT NULL,
+                //"NAME" VARCHAR(255) NOT NULL,
+                //"WWLEVEL" VARCHAR(3),
+                //"EINSETZPUNKT" VARCHAR(255),
+                //"AUSSETZPUNKT" VARCHAR(255),
+                //"KOMMENTAR" VARCHAR(255),
+                //"DATAEND" TIMESTAMP,
+                //CONSTRAINT "PK_FLUSSABSCHNITT" PRIMARY KEY ("ID")
+                //),
+                StringBuilder createTableFlussAbschnittSql = new StringBuilder("CREATE TABLE \"" + Tbl.FlussAbschnitt + "\"");
+                createTableFlussAbschnittSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.FlussId + "\" VARCHAR(255) NOT NULL,");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.WWLevel + "\" VARCHAR(3),");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" VARCHAR(255),");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" VARCHAR(255),");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.Kommentar + "\" VARCHAR(255),");
+                createTableFlussAbschnittSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+                createTableFlussAbschnittSql.AppendLine("CONSTRAINT \"PK_ " + Tbl.FlussAbschnitt + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+                ExecuteQuery(createTableFlussAbschnittSql.ToString());
+            }
 
-            //CREATE TABLE "LAENDER"
-            //(
-            // "ID"     String 255  NOT NULL,
-            // "NAME"     String 255  NOT NULL,
-            //CONSTRAINT "PK_LAENDER" PRIMARY KEY ("ID")
-            //);
-            StringBuilder createTableLaenderSql = new StringBuilder("CREATE TABLE \"" + Tbl.Laender + "\"");
-            createTableLaenderSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            createTableLaenderSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.Laender + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
-            ExecuteQuery(createTableLaenderSql.ToString());
+            if (tablesExisting[2].Value == Boolean.FalseString)
+            {
+                //CREATE TABLE "LAENDER"
+                //(
+                // "ID"     String 255  NOT NULL,
+                // "NAME"     String 255  NOT NULL,
+                //CONSTRAINT "PK_LAENDER" PRIMARY KEY ("ID")
+                //);
+                StringBuilder createTableLaenderSql = new StringBuilder("CREATE TABLE \"" + Tbl.Laender + "\"");
+                createTableLaenderSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+                createTableLaenderSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+                createTableLaenderSql.AppendLine("CONSTRAINT \"PK_" + Tbl.Laender + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+                ExecuteQuery(createTableLaenderSql.ToString());
+            }
 
-            //CREATE TABLE "STARTENDE"
-            //(
-            // "ID"     String 255  NOT NULL,
-            // "NAME"     String 255  NOT NULL,
-            // "LAND"     String 255 ,
-            // "KOORDINATEN"     String 255  NOT NULL,
-            // "EINSTIEG"     Boolean ,
-            // "AUSSTIEG"     Boolean ,
-            // "DATAEND"     TIMESTAMP,
-            //CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
-            //);
-            StringBuilder createTableStartEndeSql = new StringBuilder("CREATE TABLE \"" + Tbl.StartEnde + "\"");
-            createTableStartEndeSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.Koordinaten + "\" VARCHAR(255) NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" CHAR(1) NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" CHAR(1) NOT NULL,");
-            createTableStartEndeSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
-            createTableStartEndeSql.AppendLine("CONSTRAINT \"PK_" + Tbl.StartEnde + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
-            ExecuteQuery(createTableStartEndeSql.ToString());
+            if (tablesExisting[3].Value == Boolean.FalseString)
+            {
+                //CREATE TABLE "STARTENDE"
+                //(
+                // "ID"     String 255  NOT NULL,
+                // "NAME"     String 255  NOT NULL,
+                // "LAND"     String 255 ,
+                // "KOORDINATEN"     String 255  NOT NULL,
+                // "EINSTIEG"     Boolean ,
+                // "AUSSTIEG"     Boolean ,
+                // "DATAEND"     TIMESTAMP,
+                //CONSTRAINT "PK_STARTENDE" PRIMARY KEY ("ID")
+                //);
+                StringBuilder createTableStartEndeSql = new StringBuilder("CREATE TABLE \"" + Tbl.StartEnde + "\"");
+                createTableStartEndeSql.AppendLine("(\"" + Fld.Id + "\" VARCHAR(255)  NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.Name + "\" VARCHAR(255) NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.Land + "\" VARCHAR(255) NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.Koordinaten + "\" VARCHAR(255) NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.Einsetzpunkt + "\" CHAR(1) NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.Aussetzpunkt + "\" CHAR(1) NOT NULL,");
+                createTableStartEndeSql.AppendLine("\"" + Fld.DatAend + "\" TIMESTAMP,");
+                createTableStartEndeSql.AppendLine("CONSTRAINT \"PK_" + Tbl.StartEnde + "\" PRIMARY KEY (\"" + Fld.Id + "\"));");
+                ExecuteQuery(createTableStartEndeSql.ToString());
+            }
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------

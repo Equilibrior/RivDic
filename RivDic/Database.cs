@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using FirebirdSql.Data.FirebirdClient;
 using RivDic.Dialogs;
 
@@ -798,6 +799,15 @@ namespace RivDic
             return string.Empty;
         }
 
+        public static void SelectDbPath()
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.CheckFileExists = true;
+            openFileDialog.CheckPathExists = true;
+            openFileDialog.ShowDialog();
+            if (!string.IsNullOrEmpty(openFileDialog.FileName))
+                WriteSettings(Constants.DbPath, openFileDialog.FileName);
+        }
         #endregion Hilfsmethoden
 
         #endregion Methoden

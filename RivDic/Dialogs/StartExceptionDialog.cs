@@ -119,13 +119,10 @@ namespace RivDic.Dialogs
 
         private void btnSelectDbPath_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.CheckFileExists = true;
-            openFileDialog.CheckPathExists = true;
-            openFileDialog.ShowDialog();
-            if (!string.IsNullOrEmpty(openFileDialog.FileName))
-                Database.WriteSettings(Constants.DbPath, openFileDialog.FileName);
+            Database.SelectDbPath();
         }
+
+        
 
         private void btnEnterLoginData_Click(object sender, EventArgs e)
         {

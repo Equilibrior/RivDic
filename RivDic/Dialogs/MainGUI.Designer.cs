@@ -38,6 +38,8 @@
             this.btnSearchRiver = new System.Windows.Forms.Button();
             this.btnSearchRoute = new System.Windows.Forms.Button();
             this.btnSearchStartEnd = new System.Windows.Forms.Button();
+            this.datenbankToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.datenbankWechselnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuBar.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,7 +47,8 @@
             // 
             this.mnuBar.BackgroundImage = global::RivDic.Properties.Resources.picBackgroundImage;
             this.mnuBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuNew});
+            this.mnuNew,
+            this.datenbankToolStripMenuItem});
             this.mnuBar.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.mnuBar.Location = new System.Drawing.Point(0, 0);
             this.mnuBar.Name = "mnuBar";
@@ -123,6 +126,21 @@
             this.btnSearchStartEnd.UseVisualStyleBackColor = true;
             this.btnSearchStartEnd.Click += new System.EventHandler(this.btnSearchStartEnd_Click);
             // 
+            // datenbankToolStripMenuItem
+            // 
+            this.datenbankToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.datenbankWechselnToolStripMenuItem});
+            this.datenbankToolStripMenuItem.Name = "datenbankToolStripMenuItem";
+            this.datenbankToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
+            this.datenbankToolStripMenuItem.Text = "Datenbank";
+            // 
+            // datenbankWechselnToolStripMenuItem
+            // 
+            this.datenbankWechselnToolStripMenuItem.Name = "datenbankWechselnToolStripMenuItem";
+            this.datenbankWechselnToolStripMenuItem.Size = new System.Drawing.Size(183, 22);
+            this.datenbankWechselnToolStripMenuItem.Text = "Datenbank wechseln";
+            this.datenbankWechselnToolStripMenuItem.Click += new System.EventHandler(this.datenbankWechselnToolStripMenuItem_Click);
+            // 
             // MainGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +176,8 @@
         private System.Windows.Forms.ToolStripMenuItem smnuNewRiver;
         private System.Windows.Forms.ToolStripMenuItem smnuNewRoute;
         private System.Windows.Forms.ToolStripMenuItem smnuNewStartEnd;
+        private System.Windows.Forms.ToolStripMenuItem datenbankToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem datenbankWechselnToolStripMenuItem;
     }
 }
 

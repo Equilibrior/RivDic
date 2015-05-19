@@ -131,5 +131,11 @@ namespace RivDic
         {
 
         }
+
+        private void datenbankWechselnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Database.SelectDbPath();
+            Database.DatabaseLogin();
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace RivDic
         /// </summary>
         private static FbConnection fbConnection { get; set; }
 
-        private static List<KeyValuePair<String, String>> tablesExisting;
+        private static Dictionary<String, Boolean> requirementsDict;
 
         private static List<string> countryList;
 
@@ -341,33 +341,46 @@ namespace RivDic
         /// <returns></returns>
         private static void CheckReorgNeed()
         {
+            #region Überprüfen der Tabellen
             string sql = "SELECT * FROM RDB$RELATIONS";
             DataTable dt = ExecuteQuery(sql);
-            tablesExisting = new List<KeyValuePair<String, String>>();
+            requirementsDict = new Dictionary<string, bool>();
+            requirementsDict.Add(Tbl.Fluesse, false);
+            requirementsDict.Add(Tbl.FlussAbschnitt, false);
+            requirementsDict.Add(Tbl.Laender, false);
+            requirementsDict.Add(Tbl.StartEnde, false);
             foreach (DataRow row in dt.Rows)
             {
                 if (row[8].ToString().Trim().Equals(Tbl.Fluesse))
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Fluesse, Boolean.TrueString));
-                else
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Fluesse, Boolean.FalseString));
+                    requirementsDict[Tbl.Fluesse] =  true;
 
                 if (row[8].ToString().Trim().Equals(Tbl.FlussAbschnitt))
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.FlussAbschnitt, Boolean.TrueString));
-                else
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.FlussAbschnitt, Boolean.FalseString));
+                    requirementsDict[Tbl.FlussAbschnitt] = true;
 
                 if (row[8].ToString().Trim().Equals(Tbl.Laender))
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Laender, Boolean.TrueString));
-                else
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.Laender, Boolean.FalseString));
+                    requirementsDict[Tbl.Laender] = true;
 
                 if (row[8].ToString().Trim().Equals(Tbl.StartEnde))
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.StartEnde, Boolean.TrueString));
-                else
-                    tablesExisting.Add(new KeyValuePair<String, String>(Tbl.StartEnde, Boolean.FalseString));
+                    requirementsDict[Tbl.StartEnde] = true;
             }
+            #endregion 
 
-
+            #region Überprüfen der Fremdschlüssel
+            sql = "SELECT a.RDB$CONSTRAINT_NAME FROM RDB$RELATION_CONSTRAINTS a";
+            dt = ExecuteQuery(sql);
+            requirementsDict.Add(Key.FkFlussAbschnittToStartEnde_1, false);
+            requirementsDict.Add(Key.FkFlussAbschnittToStartEnde_2, false);
+            requirementsDict.Add(Key.FkFlussAbschnittToFluesse_1, false);
+            foreach (DataRow row in dt.Rows)
+            {
+                if (row[0].ToString().Trim().Equals(Key.FkFlussAbschnittToStartEnde_1))
+                    requirementsDict[Key.FkFlussAbschnittToStartEnde_1] = true;
+                if (row[0].ToString().Trim().Equals(Key.FkFlussAbschnittToStartEnde_2))
+                    requirementsDict[Key.FkFlussAbschnittToStartEnde_2] = true;
+                if (row[0].ToString().Trim().Equals(Key.FkFlussAbschnittToFluesse_1))
+                    requirementsDict[Key.FkFlussAbschnittToFluesse_1] = true;
+            }
+            #endregion
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------
@@ -388,7 +401,7 @@ namespace RivDic
         /// </summary>
         private static void CreateTables()
         {
-            if (tablesExisting[0].Value == Boolean.FalseString)
+            if (!requirementsDict[Tbl.Fluesse])
             {
                 //CREATE TABLE FLUESSE
                 //(
@@ -412,7 +425,7 @@ namespace RivDic
                 ExecuteQuery(createTableFluesseSql.ToString());
             }
 
-            if (tablesExisting[1].Value == Boolean.FalseString)
+            if (!requirementsDict[Tbl.FlussAbschnitt])
             {
                 //CREATE TABLE FLUSSABSCHNITT
                 //(
@@ -439,7 +452,7 @@ namespace RivDic
                 ExecuteQuery(createTableFlussAbschnittSql.ToString());
             }
 
-            if (tablesExisting[2].Value == Boolean.FalseString)
+            if (!requirementsDict[Tbl.Laender])
             {
                 //CREATE TABLE "LAENDER"
                 //(
@@ -454,7 +467,7 @@ namespace RivDic
                 ExecuteQuery(createTableLaenderSql.ToString());
             }
 
-            if (tablesExisting[3].Value == Boolean.FalseString)
+            if (!requirementsDict[Tbl.StartEnde])
             {
                 //CREATE TABLE "STARTENDE"
                 //(
@@ -486,29 +499,38 @@ namespace RivDic
         /// </summary>
         private static void AlterTables()
         {
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK1TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
-            addFK1TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_1 ");
-            addFK1TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Einsetzpunkt + " ) ");
-            addFK1TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
-            addFK1TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK1TableFlussAbschnittSql.ToString());
+            if (!requirementsDict[Key.FkFlussAbschnittToStartEnde_1])
+            {
+                //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_1" FOREIGN KEY ("EINSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+                StringBuilder addFK1TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+                addFK1TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.StartEnde + "_1 ");
+                addFK1TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Einsetzpunkt + " ) ");
+                addFK1TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
+                addFK1TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+                ExecuteQuery(addFK1TableFlussAbschnittSql.ToString());
+            }
 
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK2TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
-            addFK2TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_2 ");
-            addFK2TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Aussetzpunkt + " ) ");
-            addFK2TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
-            addFK2TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK2TableFlussAbschnittSql.ToString());
+            if (!requirementsDict[Key.FkFlussAbschnittToStartEnde_2])
+            {
+                //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_2" FOREIGN KEY ("AUSSETZPUNKT") REFERENCES "STARTENDE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+                StringBuilder addFK2TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+                addFK2TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.StartEnde + "_2 ");
+                addFK2TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.Aussetzpunkt + " ) ");
+                addFK2TableFlussAbschnittSql.Append("REFERENCES " + Tbl.StartEnde + " ( " + Fld.Id + ") ");
+                addFK2TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+                ExecuteQuery(addFK2TableFlussAbschnittSql.ToString());
+            }
 
-            //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
-            StringBuilder addFK3TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
-            addFK3TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.FlussAbschnitt + "_3 ");
-            addFK3TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.FlussId + " ) ");
-            addFK3TableFlussAbschnittSql.Append("REFERENCES " + Tbl.Fluesse + " ( " + Fld.Id + ") ");
-            addFK3TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
-            ExecuteQuery(addFK3TableFlussAbschnittSql.ToString());
+            if (!requirementsDict[Key.FkFlussAbschnittToFluesse_1])
+            {
+                //ALTER TABLE "FLUSSABSCHNITT" ADD CONSTRAINT "FK_FLUSSABSCHNITT_3" FOREIGN KEY ("FLUSSID") REFERENCES "FLUESSE" ("ID") ON UPDATE CASCADE ON DELETE NO ACTION;
+                StringBuilder addFK3TableFlussAbschnittSql = new StringBuilder("ALTER TABLE " + Tbl.FlussAbschnitt + " ");
+                addFK3TableFlussAbschnittSql.Append("ADD CONSTRAINT FK_" + Tbl.Fluesse + "_1 ");
+                addFK3TableFlussAbschnittSql.Append("FOREIGN KEY (" + Fld.FlussId + " ) ");
+                addFK3TableFlussAbschnittSql.Append("REFERENCES " + Tbl.Fluesse + " ( " + Fld.Id + ") ");
+                addFK3TableFlussAbschnittSql.Append("ON UPDATE CASCADE ON DELETE NO ACTION;");
+                ExecuteQuery(addFK3TableFlussAbschnittSql.ToString());
+            }
         }
 
         /// ------------------------------------------------------------------------------------------------------------------------

@@ -15,10 +15,6 @@ namespace RivDic
         public const string Route = "Route";
         /// <summary></summary>
         public const string StartEnd = "StartEnd";
-        /// <summary></summary>
-        public const string TrueString = "true";
-        /// <summary></summary>
-        public const string FalseString = "false";
 
         #region Datenbank
 
@@ -73,5 +69,16 @@ namespace RivDic
         public const string Kommentar = "KOMMENTAR";
         /// <summary>Koordinaten</summary>
         public const string Koordinaten = "KOORDINATEN";
+    }
+
+    public class Key
+    {
+        /// <summary>Fremdschlüssel Flussabschnitt zu StartEnde auf Feld Einsetzpunkt</summary>
+        public const string FkFlussAbschnittToStartEnde_1 = "FK_STARTENDE_1";
+        /// <summary>Fremdschlüssel Flussabschnitt zu StartEnde auf Feld Aussetzpunkt</summary>
+        public const string FkFlussAbschnittToStartEnde_2 = "FK_STARTENDE_2";
+        /// <summary>Fremdschlüssel Flussabschnitt zu Fluesse auf Feld FlussId</summary>
+        public const string FkFlussAbschnittToFluesse_1 = "FK_FLUESSE_1";
+
     }
 }

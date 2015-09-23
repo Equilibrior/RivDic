@@ -85,34 +85,34 @@ namespace RivDic.Dialogs
         {
             Dictionary<string, string> dict = new Dictionary<string, string>();
             //Route Panel
-            if (!String.IsNullOrEmpty(txtRouteName.Text))
+            if (!string.IsNullOrEmpty(txtRouteName.Text))
                 dict.Add(Fld.Name, txtRouteName.Text);
-            if (!String.IsNullOrEmpty(cbxRouteRiver.Text))
+            if (!string.IsNullOrEmpty(cbxRouteRiver.Text))
                 dict.Add(Fld.Name, cbxRouteRiver.Text);
-            if (!String.IsNullOrEmpty(cbxRouteStart.Text))
+            if (!string.IsNullOrEmpty(cbxRouteStart.Text))
                 dict.Add(Fld.Name, cbxRouteStart.Text);
-            if (!String.IsNullOrEmpty(cbxRouteEnd.Text))
+            if (!string.IsNullOrEmpty(cbxRouteEnd.Text))
                 dict.Add(Fld.Name, cbxRouteEnd.Text);
-            if (!String.IsNullOrEmpty(txtRouteWWLevel.Text))
+            if (!string.IsNullOrEmpty(txtRouteWWLevel.Text))
                 dict.Add(Fld.Name, txtRouteWWLevel.Text);
             //River Panel
-            if (!String.IsNullOrEmpty(txtRiverName.Text))
+            if (!string.IsNullOrEmpty(txtRiverName.Text))
                 dict.Add(Fld.Name, txtRiverName.Text);
-            if (!string.IsNullOrEmpty(txtRiverLand.Text))
-                dict.Add(Fld.Land, txtRiverLand.Text);
+            if (!string.IsNullOrEmpty(cbxRiverLand.SelectedText))
+                dict.Add(Fld.Land, cbxRiverLand.SelectedText);
             dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
             if (string.IsNullOrEmpty(txtRiverTicketPrice.Text))
                 dict.Add(Fld.Ticketpreis, txtRiverTicketPrice.Text);
             if (string.IsNullOrEmpty(txtRiverWWLevel.Text))
                 dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
             //Sart End Panel
-            if (!String.IsNullOrEmpty(txtStartEndName.Text))
+            if (!string.IsNullOrEmpty(txtStartEndName.Text))
                 dict.Add(Fld.Name, txtStartEndName.Text);
-            if (!String.IsNullOrEmpty(txtStartEndLand.Text))
-                dict.Add(Fld.Name, txtStartEndLand.Text);
+            if (!string.IsNullOrEmpty(cbxStartEndLand.SelectedText))
+                dict.Add(Fld.Name, cbxStartEndLand.SelectedText);
             dict.Add(Fld.Name, chkStartEndEnd.Checked.ToString());
             dict.Add(Fld.Name, chkStartEndStart.Checked.ToString());
-            if (!String.IsNullOrEmpty(mtxtStartEndCoordinates.Text))
+            if (!string.IsNullOrEmpty(mtxtStartEndCoordinates.Text))
                 dict.Add(Fld.Name, mtxtStartEndCoordinates.Text);
 
             return dict;
@@ -120,5 +120,16 @@ namespace RivDic.Dialogs
 
         #endregion Methoden
 
+        private void cbxRiverLand_DropDown(object sender, EventArgs e)
+        {
+            if (cbxRiverLand.Items.Count < 1)
+                cbxRiverLand.DataSource = Database.CountryList;
+        }
+
+        private void cbxStartEndLand_DropDown(object sender, EventArgs e)
+        {
+            if (cbxStartEndLand.Items.Count < 1)
+                cbxStartEndLand.DataSource = Database.CountryList;
+        }
     }
 }

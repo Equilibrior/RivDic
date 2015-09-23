@@ -41,6 +41,7 @@
             this.txtRouteName = new System.Windows.Forms.TextBox();
             this.lblRouteEnd = new System.Windows.Forms.Label();
             this.pnlRiver = new System.Windows.Forms.Panel();
+            this.cbxRiverLand = new System.Windows.Forms.ComboBox();
             this.btnFilterRiver = new System.Windows.Forms.Button();
             this.lblRiverTicketPricer = new System.Windows.Forms.Label();
             this.chkRiverTicket = new System.Windows.Forms.CheckBox();
@@ -48,17 +49,16 @@
             this.lblRiverTicket = new System.Windows.Forms.Label();
             this.txtRiverWWLevel = new System.Windows.Forms.TextBox();
             this.lblRiverWWLevel = new System.Windows.Forms.Label();
-            this.txtRiverLand = new System.Windows.Forms.TextBox();
             this.lblRiverLand = new System.Windows.Forms.Label();
             this.txtRiverName = new System.Windows.Forms.TextBox();
             this.lblRiverName = new System.Windows.Forms.Label();
             this.pnlStartEnd = new System.Windows.Forms.Panel();
+            this.cbxStartEndLand = new System.Windows.Forms.ComboBox();
             this.btnFilterStartEnd = new System.Windows.Forms.Button();
             this.mtxtStartEndCoordinates = new System.Windows.Forms.MaskedTextBox();
             this.lblStartEndCoordinates = new System.Windows.Forms.Label();
             this.chkStartEndStart = new System.Windows.Forms.CheckBox();
             this.chkStartEndEnd = new System.Windows.Forms.CheckBox();
-            this.txtStartEndLand = new System.Windows.Forms.TextBox();
             this.lblStartEndLand = new System.Windows.Forms.Label();
             this.txtStartEndName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
@@ -187,6 +187,7 @@
             // pnlRiver
             // 
             this.pnlRiver.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRiver.Controls.Add(this.cbxRiverLand);
             this.pnlRiver.Controls.Add(this.btnFilterRiver);
             this.pnlRiver.Controls.Add(this.lblRiverTicketPricer);
             this.pnlRiver.Controls.Add(this.chkRiverTicket);
@@ -194,7 +195,6 @@
             this.pnlRiver.Controls.Add(this.lblRiverTicket);
             this.pnlRiver.Controls.Add(this.txtRiverWWLevel);
             this.pnlRiver.Controls.Add(this.lblRiverWWLevel);
-            this.pnlRiver.Controls.Add(this.txtRiverLand);
             this.pnlRiver.Controls.Add(this.lblRiverLand);
             this.pnlRiver.Controls.Add(this.txtRiverName);
             this.pnlRiver.Controls.Add(this.lblRiverName);
@@ -203,6 +203,15 @@
             this.pnlRiver.Name = "pnlRiver";
             this.pnlRiver.Size = new System.Drawing.Size(565, 56);
             this.pnlRiver.TabIndex = 8;
+            // 
+            // cbxRiverLand
+            // 
+            this.cbxRiverLand.FormattingEnabled = true;
+            this.cbxRiverLand.Location = new System.Drawing.Point(48, 29);
+            this.cbxRiverLand.Name = "cbxRiverLand";
+            this.cbxRiverLand.Size = new System.Drawing.Size(117, 21);
+            this.cbxRiverLand.TabIndex = 17;
+            this.cbxRiverLand.DropDown += new System.EventHandler(this.cbxRiverLand_DropDown);
             // 
             // btnFilterRiver
             // 
@@ -265,14 +274,6 @@
             this.lblRiverWWLevel.TabIndex = 4;
             this.lblRiverWWLevel.Text = "Wildwasserstufe";
             // 
-            // txtRiverLand
-            // 
-            this.txtRiverLand.Location = new System.Drawing.Point(48, 29);
-            this.txtRiverLand.MaxLength = 255;
-            this.txtRiverLand.Name = "txtRiverLand";
-            this.txtRiverLand.Size = new System.Drawing.Size(116, 20);
-            this.txtRiverLand.TabIndex = 2;
-            // 
             // lblRiverLand
             // 
             this.lblRiverLand.AutoSize = true;
@@ -302,12 +303,12 @@
             // pnlStartEnd
             // 
             this.pnlStartEnd.BackColor = System.Drawing.Color.Transparent;
+            this.pnlStartEnd.Controls.Add(this.cbxStartEndLand);
             this.pnlStartEnd.Controls.Add(this.btnFilterStartEnd);
             this.pnlStartEnd.Controls.Add(this.mtxtStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.lblStartEndCoordinates);
             this.pnlStartEnd.Controls.Add(this.chkStartEndStart);
             this.pnlStartEnd.Controls.Add(this.chkStartEndEnd);
-            this.pnlStartEnd.Controls.Add(this.txtStartEndLand);
             this.pnlStartEnd.Controls.Add(this.lblStartEndLand);
             this.pnlStartEnd.Controls.Add(this.txtStartEndName);
             this.pnlStartEnd.Controls.Add(this.lblName);
@@ -318,6 +319,15 @@
             this.pnlStartEnd.Name = "pnlStartEnd";
             this.pnlStartEnd.Size = new System.Drawing.Size(565, 58);
             this.pnlStartEnd.TabIndex = 9;
+            // 
+            // cbxStartEndLand
+            // 
+            this.cbxStartEndLand.FormattingEnabled = true;
+            this.cbxStartEndLand.Location = new System.Drawing.Point(44, 30);
+            this.cbxStartEndLand.Name = "cbxStartEndLand";
+            this.cbxStartEndLand.Size = new System.Drawing.Size(117, 21);
+            this.cbxStartEndLand.TabIndex = 18;
+            this.cbxStartEndLand.DropDown += new System.EventHandler(this.cbxStartEndLand_DropDown);
             // 
             // btnFilterStartEnd
             // 
@@ -364,13 +374,6 @@
             this.chkStartEndEnd.Size = new System.Drawing.Size(15, 14);
             this.chkStartEndEnd.TabIndex = 11;
             this.chkStartEndEnd.UseVisualStyleBackColor = true;
-            // 
-            // txtStartEndLand
-            // 
-            this.txtStartEndLand.Location = new System.Drawing.Point(44, 29);
-            this.txtStartEndLand.Name = "txtStartEndLand";
-            this.txtStartEndLand.Size = new System.Drawing.Size(116, 20);
-            this.txtStartEndLand.TabIndex = 9;
             // 
             // lblStartEndLand
             // 
@@ -460,7 +463,6 @@
         private System.Windows.Forms.Label lblRiverTicket;
         private System.Windows.Forms.TextBox txtRiverWWLevel;
         private System.Windows.Forms.Label lblRiverWWLevel;
-        private System.Windows.Forms.TextBox txtRiverLand;
         private System.Windows.Forms.Label lblRiverLand;
         private System.Windows.Forms.TextBox txtRiverName;
         private System.Windows.Forms.Label lblRiverName;
@@ -469,7 +471,6 @@
         private System.Windows.Forms.Label lblStartEndCoordinates;
         private System.Windows.Forms.CheckBox chkStartEndStart;
         private System.Windows.Forms.CheckBox chkStartEndEnd;
-        private System.Windows.Forms.TextBox txtStartEndLand;
         private System.Windows.Forms.Label lblStartEndLand;
         private System.Windows.Forms.TextBox txtStartEndName;
         private System.Windows.Forms.Label lblName;
@@ -478,6 +479,7 @@
         public System.Windows.Forms.Button btnFilterRoute;
         public System.Windows.Forms.Button btnFilterRiver;
         public System.Windows.Forms.Button btnFilterStartEnd;
-
+        private System.Windows.Forms.ComboBox cbxRiverLand;
+        private System.Windows.Forms.ComboBox cbxStartEndLand;
     }
 }

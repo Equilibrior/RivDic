@@ -59,10 +59,10 @@
             this.lblRiverTicket = new System.Windows.Forms.Label();
             this.txtRiverWWLevel = new System.Windows.Forms.TextBox();
             this.lblRiverWWLevel = new System.Windows.Forms.Label();
-            this.txtRiverLand = new System.Windows.Forms.TextBox();
             this.lblRiverLand = new System.Windows.Forms.Label();
             this.txtRiverName = new System.Windows.Forms.TextBox();
             this.lblRiverName = new System.Windows.Forms.Label();
+            this.cbxRiverLand = new System.Windows.Forms.ComboBox();
             this.pnlStartEnd.SuspendLayout();
             this.pnlRoute.SuspendLayout();
             this.pnlRiver.SuspendLayout();
@@ -305,13 +305,13 @@
             // pnlRiver
             // 
             this.pnlRiver.BackColor = System.Drawing.Color.Transparent;
+            this.pnlRiver.Controls.Add(this.cbxRiverLand);
             this.pnlRiver.Controls.Add(this.lblRiverTicketPricer);
             this.pnlRiver.Controls.Add(this.chkRiverTicket);
             this.pnlRiver.Controls.Add(this.txtRiverTicketPrice);
             this.pnlRiver.Controls.Add(this.lblRiverTicket);
             this.pnlRiver.Controls.Add(this.txtRiverWWLevel);
             this.pnlRiver.Controls.Add(this.lblRiverWWLevel);
-            this.pnlRiver.Controls.Add(this.txtRiverLand);
             this.pnlRiver.Controls.Add(this.lblRiverLand);
             this.pnlRiver.Controls.Add(this.txtRiverName);
             this.pnlRiver.Controls.Add(this.lblRiverName);
@@ -376,15 +376,6 @@
             this.lblRiverWWLevel.TabIndex = 4;
             this.lblRiverWWLevel.Text = "Wildwasserstufe";
             // 
-            // txtRiverLand
-            // 
-            this.txtRiverLand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtRiverLand.Location = new System.Drawing.Point(93, 30);
-            this.txtRiverLand.MaxLength = 255;
-            this.txtRiverLand.Name = "txtRiverLand";
-            this.txtRiverLand.Size = new System.Drawing.Size(116, 20);
-            this.txtRiverLand.TabIndex = 2;
-            // 
             // lblRiverLand
             // 
             this.lblRiverLand.AutoSize = true;
@@ -411,6 +402,15 @@
             this.lblRiverName.Size = new System.Drawing.Size(35, 13);
             this.lblRiverName.TabIndex = 0;
             this.lblRiverName.Text = "Name";
+            // 
+            // cbxRiverLand
+            // 
+            this.cbxRiverLand.FormattingEnabled = true;
+            this.cbxRiverLand.Location = new System.Drawing.Point(93, 30);
+            this.cbxRiverLand.Name = "cbbRiverLand";
+            this.cbxRiverLand.Size = new System.Drawing.Size(116, 21);
+            this.cbxRiverLand.TabIndex = 10;
+            this.cbxRiverLand.DropDown += new System.EventHandler(this.cbbRiverLand_DropDown);
             // 
             // FieldsControll
             // 
@@ -457,7 +457,6 @@
         private System.Windows.Forms.CheckBox chkRiverTicket;
         private System.Windows.Forms.TextBox txtRiverTicketPrice;
         private System.Windows.Forms.TextBox txtRiverWWLevel;
-        private System.Windows.Forms.TextBox txtRiverLand;
         private System.Windows.Forms.TextBox txtRiverName;
         private System.Windows.Forms.Label lblRouteRiver;
         private System.Windows.Forms.ComboBox cbxRouteRiver;
@@ -469,5 +468,6 @@
         private System.Windows.Forms.ComboBox cbxRouteStart;
         private System.Windows.Forms.ComboBox cbxRouteEnd;
         private System.Windows.Forms.MaskedTextBox mtxtStartEndCoordinates;
+        private System.Windows.Forms.ComboBox cbxRiverLand;
     }
 }

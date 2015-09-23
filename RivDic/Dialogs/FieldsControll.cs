@@ -22,7 +22,7 @@ namespace RivDic.Dialogs
         public FieldsControll()
         {
             InitializeComponent();
-            this.Size = new Size(220, 400);
+            Size = new Size(220, 400);
         }
 
         #endregion Konstruktor
@@ -44,7 +44,7 @@ namespace RivDic.Dialogs
                     {
                         dict.Add(Fld.Id, Guid.NewGuid().ToString());
                         dict.Add(Fld.Name, txtRiverName.Text);
-                        dict.Add(Fld.Land, txtRiverLand.Text);
+                        dict.Add(Fld.Land, cbxRiverLand.SelectedText);
                         dict.Add(Fld.WWLevel, txtRiverWWLevel.Text);
                         dict.Add(Fld.Ticket, chkRiverTicket.Checked.ToString());
                         if (!String.IsNullOrEmpty(txtRiverTicketPrice.Text))
@@ -143,7 +143,7 @@ namespace RivDic.Dialogs
                 case Constants.River:
                 default:
                     {
-                        txtRiverLand.ReadOnly = value;
+                        cbxRiverLand.Enabled = value;
                         txtRiverName.ReadOnly = value;
                         txtRiverTicketPrice.ReadOnly = value;
                         txtRiverWWLevel.ReadOnly = value;
@@ -185,7 +185,7 @@ namespace RivDic.Dialogs
                 case Constants.River:
                 default:
                     {
-                        txtRiverLand.Text = row.Cells[Fld.Land].Value.ToString();
+                        cbxRiverLand.SelectedText = row.Cells[Fld.Land].Value.ToString();
                         txtRiverName.Text = row.Cells[Fld.Name].Value.ToString();
                         txtRiverTicketPrice.Text = row.Cells[Fld.Ticketpreis].Value.ToString();
                         txtRiverWWLevel.Text = row.Cells[Fld.WWLevel].Value.ToString();
@@ -225,5 +225,11 @@ namespace RivDic.Dialogs
         }
 
         #endregion Methoden
+
+        private void cbbRiverLand_DropDown(object sender, EventArgs e)
+        {
+            if (cbxRiverLand.Items.Count < 1)
+                cbxRiverLand.DataSource = Database.CountryList;
+        }
     }
 }
